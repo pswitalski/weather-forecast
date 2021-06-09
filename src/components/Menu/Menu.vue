@@ -1,11 +1,11 @@
 <template>
     <ul :class="isMenuOpen ? 'active' : ''">
-        <li>Select location</li>
-        <li>Hourly forecast</li>
-        <li>Days forecast</li>
-        <li>Current weather</li>
-        <li>Historical</li>
-        <li>Air Condition</li>
+        <li><router-link to="/">Select location</router-link></li>
+        <li><router-link to="/hourly">Hourly forecast</router-link></li>
+        <li><router-link to="/days">Days forecast</router-link></li>
+        <li><router-link to="/current">Current weather</router-link></li>
+        <li><router-link to="/historical">Historical</router-link></li>
+        <li><router-link to="/air">Air Condition</router-link></li>
         <li><button @click="closeMenuHandler"><img :src="closeIcon" alt="close menu" class="closeMenu"></button></li>
     </ul>
 </template>
@@ -97,5 +97,10 @@ export default {
     button {
         background-color: transparent;
         border: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
     }
 </style>
