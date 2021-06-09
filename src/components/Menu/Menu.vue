@@ -1,12 +1,12 @@
 <template>
-    <ul>
+    <ul :class="isMenuOpen ? 'active' : ''">
         <li>Select location</li>
         <li>Hourly forecast</li>
         <li>Days forecast</li>
         <li>Current weather</li>
         <li>Historical</li>
         <li>Air Condition</li>
-        <li><img :src="closeIcon" alt="close menu" class="closeMenu"></li>
+        <li><button @click="closeMenuHandler"><img :src="closeIcon" alt="close menu" class="closeMenu"></button></li>
     </ul>
 </template>
 
@@ -18,6 +18,14 @@ export default {
     data() {
         return {
             closeIcon: closeIcon
+        }
+    },
+    props: {
+        isMenuOpen: Boolean,
+    },
+    methods: {
+        closeMenuHandler() {
+            this.$emit('close-menu');
         }
     }
 }
@@ -36,14 +44,22 @@ export default {
 
         @media (max-width: 799px) {
             position: fixed;
-            top: 50%;
+            top: -50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, 200%);
             flex-direction: column;
             width: 80%;
             height: 80%;
             border-radius: 20px;
             justify-content: space-around;
+            transition: transform .3s;
+        }
+    }
+
+    ul.active {
+        @media (max-width: 799px) {
+            transform: translate(-50%, 75%);
+
         }
     }
 
@@ -70,11 +86,16 @@ export default {
     }
 
     .closeMenu {
-        height: 50px;
+        height: 30px;
         width: auto;
 
         @media (min-width: 800px) {
             display: none;
         }
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
     }
 </style>

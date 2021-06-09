@@ -1,7 +1,7 @@
 <template>
     <nav>
-        <Menu />
-        <button>
+        <Menu :isMenuOpen="isMenuOpen" @close-menu="openMenuHandler"/>
+        <button @click="openMenuHandler">
             <img :src="menuIcon" alt="Menu">
         </button>
     </nav>
@@ -14,14 +14,18 @@ export default {
     name: 'Nav',
     data() {
         return {
-            menuIcon: menuIcon
+            menuIcon: menuIcon,
+            isMenuOpen: false
         }
     },
     components: {
         Menu
+    },
+    methods: {
+        openMenuHandler() {
+            this.isMenuOpen = !this.isMenuOpen;
+        },
     }
-
-
 }
 </script>
 
