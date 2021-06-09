@@ -1,0 +1,80 @@
+<template>
+    <ul>
+        <li>Select location</li>
+        <li>Hourly forecast</li>
+        <li>Days forecast</li>
+        <li>Current weather</li>
+        <li>Historical</li>
+        <li>Air Condition</li>
+        <li><img :src="closeIcon" alt="close menu" class="closeMenu"></li>
+    </ul>
+</template>
+
+<script>
+import closeIcon from '../../assets/icons/close.png';
+
+export default {
+    name: "Menu",
+    data() {
+        return {
+            closeIcon: closeIcon
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+    ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        background-color: blue;
+        height: 100%;
+        width: 100%;
+
+        @media (max-width: 799px) {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            flex-direction: column;
+            width: 80%;
+            height: 80%;
+            border-radius: 20px;
+            justify-content: space-around;
+        }
+    }
+
+    li {
+        margin: 0 10px;
+        font-size: 14px;
+        text-align: center;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 3px;
+
+        @media (max-width: 799px) {
+            height: 40px;
+            width: 70%;
+            border-bottom: 3px solid rgba($color: #000000, $alpha: 0.5);
+        }
+    }
+
+    li:last-child {
+        border: none;
+    }
+
+    .closeMenu {
+        height: 50px;
+        width: auto;
+
+        @media (min-width: 800px) {
+            display: none;
+        }
+    }
+</style>
