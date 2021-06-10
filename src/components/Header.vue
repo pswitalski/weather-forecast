@@ -1,6 +1,6 @@
 <template>
-    <header>
-        <Logo />
+    <header :class="route === '/' ? 'home' : '' ">
+        <Logo  />
         <Nav />
     </header>
 </template>
@@ -14,7 +14,11 @@ export default {
     components: {
         Nav,
         Logo
+    },
+    props: {
+        route: String
     }
+
 }
 </script>
 
@@ -26,5 +30,10 @@ export default {
         width: 100%;
         height: 50px;
         background-color: green;
+        transition: transform 0.3s;
+    }
+
+    header.home {
+        transform: translateY(-50px);
     }
 </style>

@@ -1,10 +1,13 @@
 <template>
-    <footer>2021 &copy; Weather Forecast</footer>
+    <footer :class="route === '/' ? 'home' : '' " >2021 &copy; Weather Forecast</footer>
 </template>
 
 <script>
 export default {
-    name: 'Footer'
+    name: 'Footer',
+    props: {
+        route: String
+    }
 }
 </script>
 
@@ -13,9 +16,15 @@ export default {
         width: 100%;
         background-color: red;
         text-align: center;
-        padding: 4px;
         position: absolute;
         left: 0;
         bottom: 0;
+        padding: 4px;
+        transition: opacity 0.9;
+        transition: transform 0.3s;
+    }
+
+    footer.home {
+        transform: scale(0);
     }
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <Header />
+  <Header :route="isHome" />
   <router-view/>
-  <Footer />
+  <Footer :route="isHome" />
 </template>
 
 <script>
@@ -13,6 +13,11 @@ export default {
   components: {
     Header,
     Footer
+  },
+  computed: {
+    isHome() {
+      return this.$route.path
+    }
   }
 }
 </script>
