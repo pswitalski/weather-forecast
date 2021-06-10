@@ -53,6 +53,7 @@ export default {
             border-radius: 20px;
             justify-content: space-around;
             transition: transform .3s;
+            z-index: 10;
         }
     }
 

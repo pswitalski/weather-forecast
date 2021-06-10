@@ -6,11 +6,15 @@
         <button type="submit">Search</button>
         <div class="error-field">
             <p :class="isError ? 'errorMessage' : ''">{{errorMessage}}</p>
+
         </div>
     </form>
 </template>
 
 <script>
+import axios from 'axios';
+import api from '../utils/api';
+
 export default {
     name: 'SelectLocation',
     data() {
@@ -27,10 +31,26 @@ export default {
                 this.errorMessage =  "You must enter location.";
                 this.isError = true;
             } else {
-                this.$emit('location-name', this.location);
+                axios.get(`${api.main}${api.current}?q=${this.location}&units=metric${api.key}`)
+                    .then(response => {
+                        this.errorMessage = '';
+                        this.isError = false;
+                        return response;
+                     })
+                     .then(response => {
+                         if (response.status === 200) {
+                         this.$emit('location-name', this.location)
+                         }
+                     }
+                     )
+                    .catch(error => {
+                        console.log(error.response)
+                        this.errorMessage = (error.response.data.message);
+                        this.isError = true;
+                     })
             }
         }
-    }
+    },
 }
 </script>
 

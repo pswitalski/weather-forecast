@@ -2,7 +2,7 @@
   <div class="background"></div>
   <Header :route="isHome" />
   <div class="container">
-    <router-view @location-name="handleFindLocation" />
+    <router-view @location-name="handleFindLocation" :location="location" />
   </div>
   <Footer :route="isHome" />
 </template>
@@ -10,8 +10,6 @@
 <script>
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
-
-import api from './utils/api';
 
 export default {
   name: 'App',
@@ -26,19 +24,13 @@ export default {
   },
   data() {
     return {
-      location: ''
+      location: '',
     }
   },
   methods: {
     handleFindLocation(location) {
       this.location = location;
       this.$router.push('/current');
-      // console.log(`${api.main}${api.current}?q=${location}${api.key}`)
-
-      // const response = await fetch(`${api.main}${api.current}?q=${location}&units=metric${api.key}`);
-      // console.log(response)
-      // const data = await response.json();
-      // console.log(data)
     }
   }
 }

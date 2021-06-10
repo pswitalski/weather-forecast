@@ -19,7 +19,7 @@ export default {
     handleFindLocation(location) {
       this.$emit('location-name', location);
     }
-  }
+  },
 }
 </script>
 
