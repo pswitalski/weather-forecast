@@ -35,5 +35,9 @@ export default {
 
     header.home {
         transform: translateY(-50px);
+
+        @media (max-width: 799px) {
+            transform: translateY(-100px) scale(0);
+        }
     }
 </style>

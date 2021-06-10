@@ -1,4 +1,5 @@
 <template>
+  <div class="background"></div>
   <Header :route="isHome" />
   <router-view/>
   <Footer :route="isHome" />
@@ -6,7 +7,7 @@
 
 <script>
 import Header from './components/Header.vue';
-import Footer from './components/Footer.vue'
+import Footer from './components/Footer.vue';
 
 export default {
   name: 'App',
@@ -18,7 +19,7 @@ export default {
     isHome() {
       return this.$route.path
     }
-  }
+  },
 }
 </script>
 
@@ -39,6 +40,19 @@ html {
 #app {
   position: relative;
   min-height: 100vh;
+}
+
+.background {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -10;
+  background-image: url('./assets/img/background/background_comporessed.jpg');
+  background-size: cover;
+  background-position: center center;
+  filter: grayscale(40%);
 }
 
 </style>
