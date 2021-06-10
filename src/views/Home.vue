@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Logo is-home="true" />
-    <SelectLocation />
+    <SelectLocation @location-name="handleFindLocation" />
   </div>
 </template>
 
@@ -14,6 +14,11 @@ export default {
   components: {
     SelectLocation,
     Logo
+  },
+  methods: {
+    handleFindLocation(location) {
+      this.$emit('location-name', location);
+    }
   }
 }
 </script>

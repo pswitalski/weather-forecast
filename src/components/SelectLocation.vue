@@ -26,9 +26,9 @@ export default {
             if (this.location === '') {
                 this.errorMessage =  "You must enter location.";
                 this.isError = true;
+            } else {
+                this.$emit('location-name', this.location);
             }
-            console.log(this.location)
-            console.log(this.errorMessage)
         }
     }
 }

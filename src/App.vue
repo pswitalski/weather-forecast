@@ -2,7 +2,7 @@
   <div class="background"></div>
   <Header :route="isHome" />
   <div class="container">
-    <router-view/>
+    <router-view @location-name="handleFindLocation" />
   </div>
   <Footer :route="isHome" />
 </template>
@@ -22,6 +22,11 @@ export default {
       return this.$route.path
     }
   },
+  methods: {
+    handleFindLocation(location) {
+      console.log(location)
+    }
+  }
 }
 </script>
 
