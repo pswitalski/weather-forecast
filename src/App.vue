@@ -24,9 +24,21 @@ export default {
       return this.$route.path
     }
   },
+  data() {
+    return {
+      location: ''
+    }
+  },
   methods: {
     handleFindLocation(location) {
-      console.log(location)
+      this.location = location;
+      this.$router.push('/current');
+      // console.log(`${api.main}${api.current}?q=${location}${api.key}`)
+
+      // const response = await fetch(`${api.main}${api.current}?q=${location}&units=metric${api.key}`);
+      // console.log(response)
+      // const data = await response.json();
+      // console.log(data)
     }
   }
 }
