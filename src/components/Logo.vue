@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div :class="isHome ? 'homeLogo' : '' ">
         <img :src="logo" alt="Weather Forecast">
         <h1>Weather Forecast</h1>
     </div>
@@ -13,6 +13,9 @@
             return {
                 logo: logo
             }
+        },
+        props: {
+            isHome: Boolean
         }
     }
 </script>
@@ -25,6 +28,14 @@
         padding: 2px 10px 2px 4px;
         height: 100%;
         flex-basis: 100px;
+    }
+
+    div.homeLogo {
+        flex-direction: column;
+
+        h1 {
+            font-size: 32px;
+        }
     }
 
     img {
