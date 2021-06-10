@@ -1,6 +1,7 @@
 <template>
-    <div class="current">
+    <div class="current container">
         <LoadingSpinner v-if="isLoading" />
+        <h2 v-if="!isLoading" >{{currentTarget.name}}, {{currentTarget.sys.country}}</h2>
     </div>
 </template>
 
@@ -48,6 +49,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  width: auto;
+  height: auto;
+  margin: 20px;
+  padding: 14px;
+  border-radius: 30px;
+  background-color: rgba($color: #141414, $alpha: 0.7);
+  animation: enter;
+  animation-duration: 0.5s;
+}
 
+@keyframes enter {
+  from {
+    transform: scale(0)
+  }
+  to {
+    transform: none;
+  }
+}
 
 </style>
