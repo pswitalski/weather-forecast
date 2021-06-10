@@ -2,7 +2,7 @@
   <div class="background"></div>
   <Header :route="isHome" />
   <div class="container">
-    <router-view @location-name="handleFindLocation" :location="location" />
+    <router-view @location-name="handleFindLocation" :targetLocation="this.location" />
   </div>
   <Footer :route="isHome" />
 </template>

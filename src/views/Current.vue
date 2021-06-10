@@ -1,7 +1,6 @@
 <template>
     <div class="current">
         <LoadingSpinner v-if="isLoading" />
-        current
     </div>
 </template>
 
@@ -9,22 +8,37 @@
 import LoadingSpinner from '../components/LoadingSpinner.vue';
 
 import api from '../utils/api';
+import axios from 'axios';
 
 export default {
     name: 'Current',
     data() {
         return {
-            isLoading: true
+            isLoading: true,
+            currentTarget: {}
         }
     },
     components: {
         LoadingSpinner
     },
     props: {
-        location: String
+        targetLocation: String
     },
-    async mounted() {
+    mounted() {
         console.log(this.location);
+        this.isLoading = true;
+        console.log(this.targetLocation);
+        axios.get(`${api.main}${api.current}?q=${this.targetLocation}&units=metric${api.key}`)
+            .then(response => {
+                console.log(response.data);
+                this.currentTarget = response.data;
+            })
+            .then(() =>{
+                this.isLoading = false;
+            })
+            .catch(error => {
+                console.log(error.response)
+            })
     //       const response = await fetch(`${api.main}${api.current}?q=${location}&units=metric${api.key}`);
     //   console.log(response)
     //   const data = await response.json();
