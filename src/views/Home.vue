@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Logo is-home="true" />
-    <select-location />
+    <SelectLocation />
   </div>
 </template>
 
@@ -17,3 +17,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  div {
+    color: rgba($color: rgb(248, 238, 238), $alpha: .9)
+    }
+</style>

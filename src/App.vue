@@ -1,7 +1,9 @@
 <template>
   <div class="background"></div>
   <Header :route="isHome" />
-  <router-view/>
+  <div class="container">
+    <router-view/>
+  </div>
   <Footer :route="isHome" />
 </template>
 
@@ -53,6 +55,26 @@ html {
   background-size: cover;
   background-position: center center;
   filter: grayscale(40%);
+}
+
+.container {
+  width: auto;
+  height: auto;
+  margin: 20px;
+  padding: 14px;
+  border-radius: 30px;
+  background-color: rgba($color: #141414, $alpha: 0.7);
+  animation: enter;
+  animation-duration: 0.5s;
+}
+
+@keyframes enter {
+  from {
+    transform: scale(0)
+  }
+  to {
+    transform: none;
+  }
 }
 
 </style>
