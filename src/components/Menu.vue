@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import closeIcon from '../../assets/icons/close.png';
+import closeIcon from '../assets/icons/close.png';
 
 export default {
     name: "Menu",

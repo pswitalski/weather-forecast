@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import logo from '../../assets/logo/logo.png';
+    import logo from '../assets/logo/logo.png';
     export default {
         name: 'Logo',
         data() {

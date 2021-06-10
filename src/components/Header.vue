@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Nav from '../Nav/Nav.vue';
-import Logo from '../Logo/Logo.vue';
+import Nav from './Nav.vue';
+import Logo from './Logo.vue';
 
 export default {
     name: 'Header',

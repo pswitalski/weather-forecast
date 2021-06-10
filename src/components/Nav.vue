@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import menuIcon from '../../assets/icons/menu.png'
-import Menu from '../Menu/Menu.vue';
+import menuIcon from '../assets/icons/menu.png'
+import Menu from './Menu.vue';
 export default {
     name: 'Nav',
     data() {
