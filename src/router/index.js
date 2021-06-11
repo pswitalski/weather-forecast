@@ -4,6 +4,7 @@ import {
 } from 'vue-router'
 import Home from '../views/Home.vue';
 import Current from '../views/Current.vue';
+import Air from '../views/Air.vue';
 
 const routes = [{
     path: '/',
@@ -14,6 +15,11 @@ const routes = [{
     path: '/current',
     name: 'Current',
     component: Current
+  },
+  {
+    path: '/air',
+    name: 'Air',
+    component: Air
   },
   {
     path: '/about',
