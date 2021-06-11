@@ -4,6 +4,7 @@
         <label for="location">Enter location:</label>
         <input type="text" id="location" placeholder="Your city" v-model="location" :class="isError ? 'inputError' : ''">
         <button type="submit">Search</button>
+        <button @click="handleGetUserLocation" >Get location</button>
         <div class="error-field">
             <p :class="isError ? 'errorMessage' : ''">{{errorMessage}}</p>
 
@@ -32,7 +33,40 @@ export default {
                 this.errorMessage =  "You must enter location.";
                 this.isError = true;
             } else {
-                axios.get(`${api.main}${api.current}?q=${this.location}&units=metric${api.key}`)
+                this.handleApiRequest();
+            }
+        },
+        handleGetUserLocation(e) {
+            e.preventDefault();
+            window.navigator.geolocation.getCurrentPosition(this.handleGetPositionSucces, this.handleGetPositionFailure)
+        },
+        handleGetPositionSucces(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            axios.get(`${api.main}${api.reverse}?lat=${lat}&lon=${lon}&limit=1${api.key}`)
+                .then(response => {
+                    // console.log(response.data[0].name);
+                    if (response.data.length === 0) {
+                        this.isError = true;
+                        this.errorMessage = 'Something went wrong.'
+                    } else {
+                        this.isError = false;
+                        this.errorMessage = false;
+                        this.location = response.data[0].name;
+                        this.handleApiRequest();
+                    }
+                })
+                .catch(error => {
+                    console.log(error.response)
+                })
+        },
+        handleGetPositionFailure() {
+            this.isError = true;
+            this.errorMessage = 'You must allow to share your location.'
+        },
+        handleApiRequest() {
+            axios.get(`${api.main}${api.current}?q=${this.location}&units=metric${api.key}`)
                     .then(response => {
                         this.errorMessage = '';
                         this.isError = false;
@@ -50,7 +84,6 @@ export default {
                         this.errorMessage = (error.response.data.message);
                         this.isError = true;
                      })
-            }
         }
     },
 }
