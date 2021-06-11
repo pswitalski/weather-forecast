@@ -1,8 +1,7 @@
 <template>
     <ul :class="isMenuOpen ? 'active' : ''">
         <li><router-link to="/">Select location</router-link></li>
-        <li><router-link to="/hourly">Hourly forecast</router-link></li>
-        <li><router-link to="/days">Days forecast</router-link></li>
+        <li><router-link to="/forecast">Forecast</router-link></li>
         <li><router-link to="/current">Current weather</router-link></li>
         <li><router-link to="/historical">Historical</router-link></li>
         <li><router-link to="/air">Air Condition</router-link></li>

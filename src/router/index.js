@@ -5,6 +5,7 @@ import {
 import Home from '../views/Home.vue';
 import Current from '../views/Current.vue';
 import Air from '../views/Air.vue';
+import Forecast from '../views/Forecast.vue';
 
 const routes = [{
     path: '/',
@@ -20,6 +21,11 @@ const routes = [{
     path: '/air',
     name: 'Air',
     component: Air
+  },
+  {
+    path: '/forecast',
+    name: 'Forecast',
+    component: Forecast
   },
   {
     path: '/about',
