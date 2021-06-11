@@ -20,6 +20,7 @@ export default {
     data() {
         return {
         location: '',
+        coord: {},
         errorMessage: '',
         isError: false
         }
@@ -35,11 +36,12 @@ export default {
                     .then(response => {
                         this.errorMessage = '';
                         this.isError = false;
+                        this.coord = response.data.coord;
                         return response;
                      })
                      .then(response => {
                          if (response.status === 200) {
-                         this.$emit('location-name', this.location)
+                         this.$emit('location-name', [this.location, this.coord]);
                          }
                      }
                      )
