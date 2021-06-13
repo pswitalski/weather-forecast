@@ -101,5 +101,38 @@ export default {
     a {
         text-decoration: none;
         color: black;
+        transition: transform 0.4s;
     }
+
+    .router-link-active {
+        transform: scale(1.2);
+        position: relative;
+    }
+
+    .router-link-active::after {
+        box-sizing: inherit;
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto auto 0;
+        content: ' ';
+        background-color: black;
+        z-index: 1000;
+        animation: after 0.4s;
+    }
+
+    @keyframes after {
+        from {
+            transform: scaleX(0) scaleY(0);
+        }
+        to {
+            transform: scaleX(1) scaleY(1);
+        }
+    }
+
+
 </style>
