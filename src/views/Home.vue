@@ -1,12 +1,14 @@
 <template>
   <div class="home container">
     <Logo is-home="true" />
-    <SelectLocation @location-name="handleFindLocation" :history="history" />
+    <SelectLocation @location-name="handleFindLocation" :history="history" :historyTarget="historyTarget" />
   </div>
+    <LocationsHistory v-if="history.length > 0" :history="history" @history-click="setHistoryTarget" />
 </template>
 
 <script>
 import SelectLocation from '../components/SelectLocation.vue';
+import LocationsHistory from '../components/LocationsHistory.vue';
 import Logo from '../components/Logo.vue';
 import { readCookie } from '../utils/cookie';
 
@@ -14,16 +16,21 @@ export default {
   name: 'Home',
   components: {
     SelectLocation,
-    Logo
+    Logo,
+    LocationsHistory
   },
   methods: {
     handleFindLocation(location) {
       this.$emit('location-name', location);
+    },
+    setHistoryTarget(historyTarget) {
+      this.historyTarget = historyTarget;
     }
   },
   data() {
     return {
-      history: ''
+      history: [],
+      historyTarget: ''
     }
   },
   mounted() {

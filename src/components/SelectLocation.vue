@@ -2,12 +2,11 @@
     <form @submit="handleSubmit">
         <h2>Check the weather anywhere in the world</h2>
         <label for="location">Enter location:</label>
-        <input type="text" id="location" placeholder="Your city" v-model="location" :class="isError ? 'inputError' : ''">
+        <input type="text" id="location" placeholder="Your city" ref="input" v-model="location" :class="isError ? 'inputError' : ''">
         <button type="submit">Search</button>
         <button @click="handleGetUserLocation" >Get location</button>
         <div class="error-field">
             <p :class="isError ? 'errorMessage' : ''">{{errorMessage}}</p>
-
         </div>
     </form>
 </template>
@@ -20,7 +19,18 @@ import { createCookie } from '../utils/cookie';
 export default {
     name: 'SelectLocation',
     props: {
-        history: Array
+        history: Array,
+        historyTarget: String
+    },
+    watch: {
+        historyTarget: {
+            deep: true,
+            handler: function() {
+                this.$forceUpdate();
+                this.location = this.historyTarget;
+                this.handleApiRequest();
+            }
+        }
     },
     data() {
         return {
