@@ -18,7 +18,7 @@ export default {
         text-align: center;
         position: absolute;
         left: 0;
-        top: 100%;
+        bottom: 0;
         padding: 4px;
         transition: opacity 0.9;
         transition: transform 0.3s;
@@ -26,5 +26,6 @@ export default {
 
     footer.home {
         transform: scale(0);
+        // display: none;
     }
 </style>

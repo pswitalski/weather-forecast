@@ -49,26 +49,44 @@ export default {
 
 html {
   font-family: "Poppins", Helvetica, Arial, sans-serif;
+  height: fit-content;
+   background-image: url('./assets/img/background/background_comporessed.jpg');
+  background-size: cover;
+  background-position: center center;
+  filter: grayscale(40%);
+  z-index: -10;
 }
+
+
 
 #app {
   position: relative;
   min-height: 100vh;
-  padding-bottom: 1px
+  // padding-bottom: 1px
 }
 
-.background {
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: -10;
-  background-image: url('./assets/img/background/background_comporessed.jpg');
-  background-size: cover;
-  background-position: center center;
-  filter: grayscale(40%);
-}
+// #app::before {
+//   content: '';
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+
+// }
+
+// .background {
+//   width: 100%;
+//   height: 100vh;
+//   position: fixed;
+//   left: 0;
+//   top: 0;
+//   z-index: -10;
+//   background-image: url('./assets/img/background/background_comporessed.jpg');
+//   background-size: cover;
+//   background-position: center center;
+//   filter: grayscale(40%);
+// }
 
 .container {
   width: auto;

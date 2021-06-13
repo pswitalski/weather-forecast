@@ -48,6 +48,8 @@ export default {
             .catch(error => {
                 console.log(error.response)
             })
+
+
     //       const response = await fetch(`${api.main}${api.current}?q=${location}&units=metric${api.key}`);
     //   console.log(response)
     //   const data = await response.json();
