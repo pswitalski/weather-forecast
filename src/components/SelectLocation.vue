@@ -15,15 +15,19 @@
 <script>
 import axios from 'axios';
 import api from '../utils/api';
+import { createCookie } from '../utils/cookie';
 
 export default {
     name: 'SelectLocation',
+    props: {
+        history: Array
+    },
     data() {
         return {
         location: '',
         coord: {},
         errorMessage: '',
-        isError: false
+        isError: false,
         }
     },
     methods: {
@@ -74,7 +78,9 @@ export default {
                         return response;
                      })
                      .then(response => {
+                         console.log(response.data.name)
                          if (response.status === 200) {
+                         createCookie("locations", [...this.history, response.data.name]);
                          this.$emit('location-name', [this.location, this.coord]);
                          }
                      }
