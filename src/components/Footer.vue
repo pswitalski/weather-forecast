@@ -18,7 +18,7 @@ export default {
         text-align: center;
         position: absolute;
         left: 0;
-        bottom: 0;
+        top: 100%;
         padding: 4px;
         transition: opacity 0.9;
         transition: transform 0.3s;

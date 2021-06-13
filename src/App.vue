@@ -23,7 +23,8 @@ export default {
   data() {
     return {
       location: '',
-      coord: {}
+      coord: {},
+      time: ''
     }
   },
   methods: {
@@ -53,6 +54,7 @@ html {
 #app {
   position: relative;
   min-height: 100vh;
+  padding-bottom: 1px
 }
 
 .background {

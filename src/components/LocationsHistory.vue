@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container location-history">
         <h3>Recent searches:</h3>
         <ul>
             <li v-for="item in history" :key="item" @click="handleHistoryClick(item)" >{{item}}</li>
@@ -20,3 +20,25 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+    div {
+        text-align: center;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    li {
+        cursor: pointer;
+        padding: 5px 10px;
+    }
+
+    li:hover {
+        color: #eee;
+    }
+</style>

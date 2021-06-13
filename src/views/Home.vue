@@ -34,6 +34,7 @@ export default {
     }
   },
   mounted() {
+
         const cookie = decodeURI(readCookie('locations'));
         const history = cookie.split(',');
         if (history[0] === "null") {
@@ -45,6 +46,7 @@ export default {
         }
         console.log(history)
         this.history = history;
+
     },
 }
 </script>
@@ -63,6 +65,10 @@ export default {
   background-color: rgba($color: #141414, $alpha: 0.7);
   animation: enter;
   animation-duration: 0.5s;
+}
+
+.home, .location-history {
+  transform: translateY(-50px);
 }
 
 @keyframes enter {
