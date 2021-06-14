@@ -1,7 +1,9 @@
 <template>
 <div class="container">
     <LoadingSpinner v-if="isLoading" />
-    <LineChart :chartData="chartData" :chartOptions="chartOptions" />
+    <div v-if="!isLoading" class="chart-container">
+        <LineChart :chartData="chartData" :chartOptions="chartOptions" />
+    </div>
     daily
 </div>
 </template>
@@ -12,6 +14,7 @@ import LineChart from '../components/LineChart.vue';
 
 import axios from 'axios';
 import api from '../utils/api';
+import { DailyFormatData } from '../utils/formatDataFromApi';
 
 export default {
     name: 'DailyForecast',
@@ -24,27 +27,23 @@ export default {
     },
     data() {
         return {
-            isLoading: false,
+            isLoading: true,
             OneCallResponse: {},
-            chartData: {
-      labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      datasets: [
-        {
-          label: 'Temperature',
-          backgroundColor: '#ddd',
-          data: [10, 12, 9, 14, 10, 20, 18],
-          fill: false
-        },
-        {
-          label: 'Temperature',
-          backgroundColor: '#333',
-          data: [20, 12, 9, 14, 10, 20, 18],
-          fill: false
-        }
-        ],
-     },
+            chartData: {},
             chartOptions: {
-        responsive: true
+            responsive: true,
+            maintainAspectRatio: false,
+
+    //         animations: {
+    //   tension: {
+    //     duration: 1000,
+    //     easing: 'linear',
+    //     from: 1,
+    //     to: 0,
+    //     loop: true
+    //   }
+    // },
+
         }
         }
     },
@@ -54,7 +53,7 @@ export default {
             .then(response => {
                 console.log(response.data.daily);
                 this.OneCallResponse = response.data;
-
+                this.chartData = DailyFormatData(response.data.daily)
 
 
                 this.isLoading = false;
@@ -65,3 +64,9 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+    .chart-container {
+        background-color: rgb(255, 255, 255);
+    }
+</style>
