@@ -1,10 +1,11 @@
 import {
     dayOfTheWeek,
-    dayAndMonth
+    dayAndMonth,
+    hour
 } from './dateConverter';
 
 export const dailyTempData = (data) => {
-    console.log(data);
+    // console.log(data);
     const days = [];
     const temps = [];
     const min = [];
@@ -78,4 +79,45 @@ export const dailyTempData = (data) => {
     return chartData;
 }
 
-// export const
+export const hourlyTempData = (data) => {
+    const temps = [];
+    const feels = [];
+    const hours = [];
+
+    console.log(data);
+
+    data.forEach(object => {
+        temps.push(object.temp);
+        feels.push(object.feels_like);
+
+        const unixTime = object.dt;
+        const date = new Date(unixTime * 1000);
+        const h = hour(date);
+        hours.push(h);
+    })
+
+    const chartData = {
+        labels: hours,
+        datasets: [{
+                label: 'Temp.',
+                data: temps,
+                fill: false,
+                backgroundColor: 'orange',
+                borderColor: 'orange',
+                // pointRadius: 5,
+                // pointHoverRadius: 7
+            },
+            {
+                label: 'Apparent Temp.',
+                data: feels,
+                fill: false,
+                backgroundColor: 'green',
+                borderColor: 'green',
+                // pointRadius: 5,
+                // pointHoverRadius: 7
+            }
+        ],
+    }
+    console.log(chartData)
+    return chartData;
+}

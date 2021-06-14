@@ -53,3 +53,9 @@ export const dayAndMonth = (date) => {
 
     return `${day}.${month}`
 }
+
+export const hour = (date) => {
+    console.log(date)
+    const hour = date.getHours()
+    return hour;
+}

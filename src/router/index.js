@@ -5,7 +5,8 @@ import {
 import Home from '../views/Home.vue';
 import Current from '../views/Current.vue';
 import Air from '../views/Air.vue';
-import Forecast from '../views/Forecast.vue';
+import Daily from '../views/Daily.vue';
+import Hourly from '../views/Hourly.vue'
 
 const routes = [{
     path: '/',
@@ -23,9 +24,14 @@ const routes = [{
     component: Air
   },
   {
-    path: '/forecast',
-    name: 'Forecast',
-    component: Forecast
+    path: '/daily',
+    name: 'Daily',
+    component: Daily
+  },
+  {
+    path: '/hourly',
+    name: 'Hourly',
+    component: Hourly
   }
 ]
 

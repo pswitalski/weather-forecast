@@ -4,22 +4,22 @@
     <div v-if="!isLoading" class="chart-container">
         <LineChart :chartData="tempChart.chartData" :chartOptions="tempChart.chartOptions" />
     </div>
-    daily
 </div>
 </template>
 
 <script>
-import LoadingSpinner from '../components/LoadingSpinner.vue';
-import LineChart from '../components/LineChart.vue';
+import LoadingSpinner from './LoadingSpinner.vue';
+import LineChart from './LineChart.vue';
 
 import axios from 'axios';
 import api from '../utils/api';
 import { dailyTempData } from '../utils/formatDataFromApi';
+import { getLineChartConfig } from '../utils/chartsConfig';
 
 Chart.defaults.global.legend.labels.usePointStyle = true;
 
 export default {
-    name: 'DailyForecast',
+    name: 'Forecast',
     components: {
         LoadingSpinner,
         LineChart
@@ -33,38 +33,7 @@ export default {
             OneCallResponse: {},
             tempChart: {
                 chartData: {},
-                chartOptions: {
-                title: {
-                    display: true,
-                    text: 'Daily temperature forecast'
-                },
-                responsive: true,
-                maintainAspectRatio: false,
-                elements: {
-                    point: {
-                        radius: 5,
-                        hoverRadius: 7
-                    }
-                },
-                layout: {
-                    padding: 10
-                },
-                scales: {
-                    yAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Temperature [°C]'
-                        }
-                    }]
-                },
-                legend: {
-                    display: true,
-                    position: 'top',
-                    labels: {
-                        fontColor: '#333'
-                    }
-                }
-            }
+                chartOptions: getLineChartConfig('Daily temperature forecast', 'Temperature [°C]')
             }
 
 
@@ -77,8 +46,6 @@ export default {
                 console.log(response.data.daily);
                 this.OneCallResponse = response.data;
                 this.tempChart.chartData = dailyTempData(response.data.daily);
-
-
                 this.isLoading = false;
             })
             .catch(error => {

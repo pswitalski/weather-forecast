@@ -1,27 +1,38 @@
 <template>
 <div class="container">
     <LoadingSpinner v-if="isLoading" />
-    hourly
+    <div v-if="!isLoading" class="chart-container">
+        <LineChart :chartData="tempChart.chartData" :chartOptions="tempChart.chartOptions" />
+        <!-- <LineChart /> -->
+    </div>
 </div>
 </template>
 
 <script>
 import LoadingSpinner from '../components/LoadingSpinner.vue';
+import LineChart from '../components/LineChart.vue';
 import axios from 'axios';
 import api from '../utils/api';
+import { getLineChartConfig } from '../utils/chartsConfig';
+import { hourlyTempData } from '../utils/formatDataFromApi';
 
 export default {
     name: 'HourlyForecast',
     components: {
-        LoadingSpinner
+        LoadingSpinner,
+        LineChart
     },
     props: {
         coord: Object
     },
     data() {
         return {
-            isLoading: false,
-            OneCallResponse: {}
+            isLoading: true,
+            OneCallResponse: {},
+            tempChart: {
+                chartData: {},
+                chartOptions: getLineChartConfig('Hourly temperature forecast', 'Temperature [°C]')
+            }
         }
     },
     mounted() {
@@ -30,6 +41,7 @@ export default {
             .then(response => {
                 console.log(response.data);
                 this.OneCallResponse = response.data;
+                this.tempChart.chartData = hourlyTempData(response.data.hourly);
                 this.isLoading = false;
             })
             .catch(error => {
@@ -38,3 +50,10 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+    .chart-container {
+        background-color: rgb(255, 255, 255);
+        border-radius: 5px;
+    }
+</style>

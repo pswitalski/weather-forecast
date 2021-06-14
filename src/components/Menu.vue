@@ -1,7 +1,8 @@
 <template>
     <ul :class="isMenuOpen ? 'active' : ''">
         <li><router-link to="/">Select location</router-link></li>
-        <li><router-link to="/forecast">Forecast</router-link></li>
+        <li><router-link to="/hourly">Hourly Forecast</router-link></li>
+        <li><router-link to="/daily">Daily Forecast</router-link></li>
         <li><router-link to="/current">Current weather</router-link></li>
         <li><router-link to="/air">Air Condition</router-link></li>
         <li><button @click="closeMenuHandler"><img :src="closeIcon" alt="close menu" class="closeMenu"></button></li>
