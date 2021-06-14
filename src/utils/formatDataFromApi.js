@@ -124,7 +124,7 @@ export const hourlyTempData = (data) => {
     return chartData;
 }
 
-export const dailyPressure = (data) => {
+export const getPressure = (data) => {
     const pressures = [];
     const days = [];
 
@@ -151,3 +151,7 @@ export const dailyPressure = (data) => {
 
     return chartData;
 }
+
+// export const hourlyPressure = (data) => {
+//     console.log(data)
+// }

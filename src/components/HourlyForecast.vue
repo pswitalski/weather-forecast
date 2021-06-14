@@ -5,6 +5,12 @@
         <LineChart :chartData="tempChart.chartData" :chartOptions="tempChart.chartOptions" />
     </div>
 </div>
+<div class="container">
+    <LoadingSpinner v-if="isLoading" />
+    <div v-if="!isLoading" class="chart-container">
+        <LineChart :chartData="pressureChart.chartData" :chartOptions="pressureChart.chartOptions" />
+    </div>
+</div>
 </template>
 
 <script>
@@ -13,7 +19,7 @@ import LineChart from '../components/LineChart.vue';
 import axios from 'axios';
 import api from '../utils/api';
 import { getLineChartConfig } from '../utils/chartsConfig';
-import { hourlyTempData } from '../utils/formatDataFromApi';
+import { hourlyTempData, getPressure } from '../utils/formatDataFromApi';
 
 export default {
     name: 'HourlyForecast',
@@ -31,6 +37,10 @@ export default {
             tempChart: {
                 chartData: {},
                 chartOptions: getLineChartConfig('Hourly temperature forecast', 'Temperature [°C]', 'Hours')
+            },
+            pressureChart: {
+                chartData: {},
+                chartOptions: getLineChartConfig('Hourly pressure', 'Pressure [hPa]')
             }
         }
     },
@@ -41,6 +51,7 @@ export default {
                 console.log(response.data);
                 this.OneCallResponse = response.data;
                 this.tempChart.chartData = hourlyTempData(response.data.hourly);
+                this.pressureChart.chartData = getPressure(response.data.hourly);
                 this.isLoading = false;
             })
             .catch(error => {
