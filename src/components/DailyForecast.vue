@@ -14,7 +14,7 @@ import LineChart from '../components/LineChart.vue';
 
 import axios from 'axios';
 import api from '../utils/api';
-import { DailyFormatData } from '../utils/formatDataFromApi';
+import { DailyTempData } from '../utils/formatDataFromApi';
 
 export default {
     name: 'DailyForecast',
@@ -31,20 +31,37 @@ export default {
             OneCallResponse: {},
             chartData: {},
             chartOptions: {
-            responsive: true,
-            maintainAspectRatio: false,
-
-    //         animations: {
-    //   tension: {
-    //     duration: 1000,
-    //     easing: 'linear',
-    //     from: 1,
-    //     to: 0,
-    //     loop: true
-    //   }
-    // },
-
-        }
+                title: {
+                    display: true,
+                    text: 'Daily temperature forecast'
+                },
+                responsive: true,
+                maintainAspectRatio: false,
+                elements: {
+                    point: {
+                        radius: 5,
+                        hoverRadius: 7
+                    }
+                },
+                layout: {
+                    padding: 10
+                },
+                scales: {
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Temperature [°C]'
+                        }
+                    }]
+                },
+                lenend: {
+                    display: true,
+                    labels: {
+                        usePointStyle: true,
+                        // pointStyle: 'circle'
+                    }
+                }
+            }
         }
     },
     mounted() {
@@ -53,7 +70,7 @@ export default {
             .then(response => {
                 console.log(response.data.daily);
                 this.OneCallResponse = response.data;
-                this.chartData = DailyFormatData(response.data.daily)
+                this.chartData = DailyTempData(response.data.daily)
 
 
                 this.isLoading = false;
@@ -68,5 +85,6 @@ export default {
 <style lang="scss" scoped>
     .chart-container {
         background-color: rgb(255, 255, 255);
+        border-radius: 5px;
     }
 </style>
