@@ -3,7 +3,6 @@
     <LoadingSpinner v-if="isLoading" />
     <div v-if="!isLoading" class="chart-container">
         <LineChart :chartData="tempChart.chartData" :chartOptions="tempChart.chartOptions" />
-        <!-- <LineChart /> -->
     </div>
 </div>
 </template>
@@ -31,7 +30,7 @@ export default {
             OneCallResponse: {},
             tempChart: {
                 chartData: {},
-                chartOptions: getLineChartConfig('Hourly temperature forecast', 'Temperature [°C]')
+                chartOptions: getLineChartConfig('Hourly temperature forecast', 'Temperature [°C]', 'Hours')
             }
         }
     },

@@ -5,6 +5,12 @@
         <LineChart :chartData="tempChart.chartData" :chartOptions="tempChart.chartOptions" />
     </div>
 </div>
+<div class="container">
+    <LoadingSpinner v-if="isLoading" />
+    <div v-if="!isLoading" class="chart-container">
+        <LineChart :chartData="pressureChart.chartData" :chartOptions="pressureChart.chartOptions" />
+    </div>
+</div>
 </template>
 
 <script>
@@ -13,7 +19,7 @@ import LineChart from './LineChart.vue';
 
 import axios from 'axios';
 import api from '../utils/api';
-import { dailyTempData } from '../utils/formatDataFromApi';
+import { dailyTempData, dailyPressure } from '../utils/formatDataFromApi';
 import { getLineChartConfig } from '../utils/chartsConfig';
 
 Chart.defaults.global.legend.labels.usePointStyle = true;
@@ -34,6 +40,10 @@ export default {
             tempChart: {
                 chartData: {},
                 chartOptions: getLineChartConfig('Daily temperature forecast', 'Temperature [°C]')
+            },
+            pressureChart: {
+                chartData: {},
+                chartOptions: getLineChartConfig('Daily pressure', 'Pressure [hPa]')
             }
 
 
@@ -46,6 +56,7 @@ export default {
                 console.log(response.data.daily);
                 this.OneCallResponse = response.data;
                 this.tempChart.chartData = dailyTempData(response.data.daily);
+                this.pressureChart.chartData = dailyPressure(response.data.daily);
                 this.isLoading = false;
             })
             .catch(error => {

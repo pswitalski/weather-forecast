@@ -34,7 +34,7 @@ export default {
         }
     },
     mounted() {
-        console.log(this.location);
+        console.log('api request');
         this.isLoading = true;
         console.log(this.targetLocation);
         axios.get(`${api.main}${api.current}?q=${this.targetLocation}&units=metric&lang=pl${api.key}`)
@@ -48,17 +48,7 @@ export default {
             .catch(error => {
                 console.log(error.response)
             })
-
-
-    //       const response = await fetch(`${api.main}${api.current}?q=${location}&units=metric${api.key}`);
-    //   console.log(response)
-    //   const data = await response.json();
-    //   console.log(data)
     }
+
 }
 </script>
-
-<style lang="scss" scoped>
-
-
-</style>

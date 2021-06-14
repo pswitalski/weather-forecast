@@ -1,4 +1,4 @@
-export const getLineChartConfig = (title, yLabel) => {
+export const getLineChartConfig = (title, yLabel, xLabel) => {
     const chartOptions = {
         title: {
             display: true,
@@ -20,6 +20,12 @@ export const getLineChartConfig = (title, yLabel) => {
                 scaleLabel: {
                     display: true,
                     labelString: yLabel
+                }
+            }],
+            xAxes: [{
+                scaleLabel: {
+                    display: (xLabel ? true : false),
+                    labelString: xLabel
                 }
             }]
         },

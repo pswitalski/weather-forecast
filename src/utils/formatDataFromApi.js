@@ -12,7 +12,9 @@ export const dailyTempData = (data) => {
     const max = [];
     const feels = [];
     // const pressure = [];
+
     // const windSpeed = [];
+
     // const cloudiness = [];
     // const rain = [];
     // const precipitation = [];
@@ -119,5 +121,33 @@ export const hourlyTempData = (data) => {
         ],
     }
     console.log(chartData)
+    return chartData;
+}
+
+export const dailyPressure = (data) => {
+    const pressures = [];
+    const days = [];
+
+    data.forEach(object => {
+        pressures.push(object.pressure);
+
+        const unixTime = object.dt;
+        const date = new Date(unixTime * 1000);
+        const d = dayOfTheWeek(date);
+        const dd = dayAndMonth(date)
+        days.push(`${d}, ${dd}`)
+    })
+
+    const chartData = {
+        labels: days,
+        datasets: [{
+            label: 'Pressure',
+            data: pressures,
+            fill: false,
+            backgroundColor: 'orange',
+            borderColor: 'orange',
+        }, ],
+    }
+
     return chartData;
 }
