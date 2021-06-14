@@ -1,6 +1,7 @@
 <template>
   <div class="background"></div>
   <Header :route="isHome" />
+  <LocationDisplay v-if="isHome !== '/'" :name="locationFromResponse" :country="countryFromResponse" :weather="weatherFromResponse" :temp="tempFromResponse" />
   <router-view @location-name="handleFindLocation" :targetLocation="this.location" :coord="this.coord" />
   <Footer :route="isHome" />
 </template>
@@ -8,12 +9,14 @@
 <script>
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
+import LocationDisplay from './components/LocationDisplay.vue';
 
 export default {
   name: 'App',
   components: {
     Header,
-    Footer
+    Footer,
+    LocationDisplay
   },
   computed: {
     isHome() {
@@ -23,6 +26,10 @@ export default {
   data() {
     return {
       location: '',
+      locationFromResponse: '',
+      countryFromResponse: '',
+      weatherFromResponse: {},
+      tempFromResponse: '',
       coord: {},
       time: ''
     }
@@ -31,6 +38,10 @@ export default {
     handleFindLocation(data) {
       this.location = data[0];
       this.coord = data[1];
+      this.locationFromResponse = data[2];
+      this.countryFromResponse = data[3];
+      this.weatherFromResponse = data[4];
+      this.tempFromResponse = data[5];
       this.$router.push('/current');
     }
   }

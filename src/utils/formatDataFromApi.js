@@ -3,7 +3,7 @@ import {
     dayAndMonth
 } from './dateConverter';
 
-export const DailyTempData = (data) => {
+export const dailyTempData = (data) => {
     console.log(data);
     const days = [];
     const temps = [];
@@ -40,7 +40,7 @@ export const DailyTempData = (data) => {
                 label: 'Day Temp.',
                 data: temps,
                 fill: false,
-                backgroundColor: '#777',
+                backgroundColor: 'orange',
                 borderColor: 'orange',
                 // pointRadius: 5,
                 // pointHoverRadius: 7
@@ -49,7 +49,7 @@ export const DailyTempData = (data) => {
                 label: 'Apparent Temp.',
                 data: feels,
                 fill: false,
-                backgroundColor: '777#',
+                backgroundColor: 'green',
                 borderColor: 'green',
                 // pointRadius: 5,
                 // pointHoverRadius: 7
@@ -58,7 +58,7 @@ export const DailyTempData = (data) => {
                 label: 'Min',
                 data: min,
                 fill: false,
-                backgroundColor: '#ccc',
+                backgroundColor: 'cyan',
                 borderColor: 'cyan',
                 // pointRadius: 5,
                 // pointHoverRadius: 7
@@ -67,7 +67,7 @@ export const DailyTempData = (data) => {
                 label: 'Max',
                 data: max,
                 fill: false,
-                backgroundColor: '#777',
+                backgroundColor: 'red',
                 borderColor: 'red',
                 // pointRadius: 5,
                 // pointHoverRadius: 7
@@ -77,3 +77,5 @@ export const DailyTempData = (data) => {
     console.log(chartData)
     return chartData;
 }
+
+// export const

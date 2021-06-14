@@ -2,7 +2,7 @@
 <div class="container">
     <LoadingSpinner v-if="isLoading" />
     <div v-if="!isLoading" class="chart-container">
-        <LineChart :chartData="chartData" :chartOptions="chartOptions" />
+        <LineChart :chartData="tempChart.chartData" :chartOptions="tempChart.chartOptions" />
     </div>
     daily
 </div>
@@ -14,7 +14,9 @@ import LineChart from '../components/LineChart.vue';
 
 import axios from 'axios';
 import api from '../utils/api';
-import { DailyTempData } from '../utils/formatDataFromApi';
+import { dailyTempData } from '../utils/formatDataFromApi';
+
+Chart.defaults.global.legend.labels.usePointStyle = true;
 
 export default {
     name: 'DailyForecast',
@@ -29,8 +31,9 @@ export default {
         return {
             isLoading: true,
             OneCallResponse: {},
-            chartData: {},
-            chartOptions: {
+            tempChart: {
+                chartData: {},
+                chartOptions: {
                 title: {
                     display: true,
                     text: 'Daily temperature forecast'
@@ -54,14 +57,17 @@ export default {
                         }
                     }]
                 },
-                lenend: {
+                legend: {
                     display: true,
+                    position: 'top',
                     labels: {
-                        usePointStyle: true,
-                        // pointStyle: 'circle'
+                        fontColor: '#333'
                     }
                 }
             }
+            }
+
+
         }
     },
     mounted() {
@@ -70,7 +76,7 @@ export default {
             .then(response => {
                 console.log(response.data.daily);
                 this.OneCallResponse = response.data;
-                this.chartData = DailyTempData(response.data.daily)
+                this.tempChart.chartData = dailyTempData(response.data.daily);
 
 
                 this.isLoading = false;
