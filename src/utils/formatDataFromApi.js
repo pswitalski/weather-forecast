@@ -304,3 +304,51 @@ export const dailyPercentage = (data) => {
     console.log(chartData)
     return chartData;
 }
+
+export const hourlyPercentage = (data) => {
+    const hours = [];
+    const clouds = [];
+    const humidity = [];
+    const precipitation = [];
+
+    console.log(data)
+
+    data.forEach(object => {
+        const unixTime = object.dt;
+        const date = new Date(unixTime * 1000);
+        const h = hour(date);
+        hours.push(h);
+
+        clouds.push(object.clouds);
+        humidity.push(object.humidity);
+        precipitation.push(object.pop * 100);
+    })
+
+    const chartData = {
+        labels: hours,
+        datasets: [{
+                label: 'Cloudiness',
+                data: clouds,
+                fill: false,
+                backgroundColor: 'orange',
+                borderColor: 'orange',
+            },
+            {
+                label: 'Humidity',
+                data: humidity,
+                fill: false,
+                backgroundColor: 'cadetBlue',
+                borderColor: 'cadetBlue',
+            },
+            {
+                label: 'Probability of precipitation',
+                data: precipitation,
+                fill: false,
+                backgroundColor: 'cyan',
+                borderColor: 'cyan',
+            }
+        ],
+    }
+    console.log(chartData)
+    return chartData;
+}
