@@ -189,3 +189,31 @@ export const minHourlyPressure = (data) => {
 
     return minimalPressure;
 }
+
+export const dailyWind = (data) => {
+    const winds = [];
+    const days = [];
+
+    data.forEach(object => {
+        winds.push(object.wind_speed);
+
+        const unixTime = object.dt;
+        const date = new Date(unixTime * 1000);
+        const d = dayOfTheWeek(date);
+        const dd = dayAndMonth(date)
+        days.push(`${d}, ${dd}`)
+    })
+
+    const chartData = {
+        labels: days,
+        datasets: [{
+            label: 'Wind speed',
+            data: winds,
+            fill: false,
+            backgroundColor: 'cyan',
+            borderColor: 'cyan',
+        }, ],
+    }
+
+    return chartData;
+}
