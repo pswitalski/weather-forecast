@@ -65,6 +65,14 @@ export default {
             percentageChart: {
                 chartData: {},
                 chartOptions: getBarChartConfig('Cloudiness, humidity and probability of precipitation', '[%]', '', 0, 100)
+            },
+            rainChart: {
+                chartData: {},
+                chartOptions: {}
+            },
+            snowChart: {
+                chartData: {},
+                chartOptions: {}
             }
         }
     },

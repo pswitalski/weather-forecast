@@ -23,6 +23,18 @@
         <BarChart :chartData="percentageChart.chartData" :chartOptions="percentageChart.chartOptions" />
     </div>
 </div>
+<div class="container" v-if="isSnow">
+    <LoadingSpinner v-if="isLoading" />
+    <div v-if="!isLoading" class="chart-container">
+        <BarChart :chartData="snowChart.chartData" :chartOptions="snowChart.chartOptions" />
+    </div>
+</div>
+<div class="container" v-if="isRain">
+    <LoadingSpinner v-if="isLoading" />
+    <div v-if="!isLoading" class="chart-container">
+        <BarChart :chartData="rainChart.chartData" :chartOptions="rainChart.chartOptions" />
+    </div>
+</div>
 </template>
 
 <script>
@@ -32,7 +44,7 @@ import BarChart from './BarChart.vue';
 
 import axios from 'axios';
 import api from '../utils/api';
-import { dailyTempData, dailyPressure, dailyWind, dailyPercentage,checkAttendance } from '../utils/formatDataFromApi';
+import { dailyTempData, dailyPressure, dailyWind, dailyPercentage,checkAttendance, dailySnow, dailyRain } from '../utils/formatDataFromApi';
 import { getBarChartConfig, getLineChartConfig } from '../utils/chartsConfig';
 
 Chart.defaults.global.legend.labels.usePointStyle = true;
@@ -68,6 +80,14 @@ export default {
             percentageChart: {
                 chartData: {},
                 chartOptions: getBarChartConfig('Cloudiness, humidity and probability of precipitation', '[%]', '', 0, 100)
+            },
+            rainChart: {
+                chartData: {},
+                chartOptions: getBarChartConfig('Rain volume', '[mm]')
+            },
+            snowChart: {
+                chartData: {},
+                chartOptions: getBarChartConfig('Snow volume', '[mm]')
             }
         }
     },
@@ -85,6 +105,12 @@ export default {
                 this.percentageChart.chartData =  dailyPercentage(response.data.daily);
                 this.isRain = checkAttendance(response.data.daily, 'rain');
                 this.isSnow = checkAttendance(response.data.daily, 'snow');
+                if (this.isSnow) {
+                    this.snowChart.chartData = dailySnow(response.data.daily);
+                }
+                if (this.isRain) {
+                    this.rainChart.chartData = dailyRain(response.data.daily);
+                }
                 this.isLoading = false;
             })
             .catch(error => {

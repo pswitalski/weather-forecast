@@ -364,3 +364,65 @@ export const checkAttendance = (data, target) => {
     })
     return isFound;
 }
+
+export const dailySnow = (data) => {
+    const days = [];
+    const snows = [];
+    console.log(data);
+    data.forEach(object => {
+        const unixTime = object.dt;
+        const date = new Date(unixTime * 1000);
+        const d = dayOfTheWeek(date);
+        const dd = dayAndMonth(date);
+        days.push(`${d}, ${dd}`);
+
+        if ('snow' in object) {
+            snows.push(object.snow)
+        } else {
+            snows.push(0)
+        }
+    })
+
+    const chartData = {
+        labels: days,
+        datasets: [{
+            label: 'Snow volume',
+            data: snows,
+            fill: false,
+            backgroundColor: 'orange',
+            borderColor: 'orange',
+        }, ],
+    }
+    return chartData;
+}
+
+export const dailyRain = (data) => {
+    const days = [];
+    const rains = [];
+    console.log(data);
+    data.forEach(object => {
+        const unixTime = object.dt;
+        const date = new Date(unixTime * 1000);
+        const d = dayOfTheWeek(date);
+        const dd = dayAndMonth(date);
+        days.push(`${d}, ${dd}`);
+
+        if ('rain' in object) {
+            rains.push(object.rain)
+        } else {
+            rains.push(0)
+        }
+    })
+
+    const chartData = {
+        labels: days,
+        datasets: [{
+            label: 'Rain volume',
+            data: rains,
+            fill: false,
+            backgroundColor: 'orange',
+            borderColor: 'orange',
+        }, ],
+    }
+    return chartData;
+}
