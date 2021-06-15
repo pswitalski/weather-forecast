@@ -41,7 +41,7 @@ export const getLineChartConfig = (title, yLabel, xLabel) => {
     return chartOptions;
 }
 
-export const getBarChartConfig = (title, yLabel, xLabel, minValue = 900) => {
+export const getBarChartConfig = (title, yLabel, xLabel, minValue, maxValue) => {
     const chartOptions = {
         title: {
             display: true,
@@ -65,7 +65,8 @@ export const getBarChartConfig = (title, yLabel, xLabel, minValue = 900) => {
                     labelString: yLabel
                 },
                 ticks: {
-                    suggestedMin: minValue - 1
+                    suggestedMin: (minValue ? minValue - 1 : ''),
+                    suggestedMax: (maxValue ? maxValue : '')
                 }
             }],
             xAxes: [{

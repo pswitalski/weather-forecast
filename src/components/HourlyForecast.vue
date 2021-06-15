@@ -52,7 +52,7 @@ export default {
             },
             windChart: {
                 chartData: {},
-                chartOptions: getBarChartConfig('Hourly wind speed', 'Wind speed [m/s]')
+                chartOptions: getBarChartConfig('Hourly wind speed', 'Wind speed [m/s]', 'Hours')
             }
         }
     },

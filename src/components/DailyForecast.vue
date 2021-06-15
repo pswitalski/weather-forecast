@@ -17,6 +17,12 @@
         <BarChart :chartData="windChart.chartData" :chartOptions="windChart.chartOptions" />
     </div>
 </div>
+<div class="container">
+    <LoadingSpinner v-if="isLoading" />
+    <div v-if="!isLoading" class="chart-container">
+        <BarChart :chartData="percentageChart.chartData" :chartOptions="percentageChart.chartOptions" />
+    </div>
+</div>
 </template>
 
 <script>
@@ -26,7 +32,7 @@ import BarChart from './BarChart.vue';
 
 import axios from 'axios';
 import api from '../utils/api';
-import { dailyTempData, dailyPressure, dailyWind } from '../utils/formatDataFromApi';
+import { dailyTempData, dailyPressure, dailyWind, dailyPercentage } from '../utils/formatDataFromApi';
 import { getBarChartConfig, getLineChartConfig } from '../utils/chartsConfig';
 
 Chart.defaults.global.legend.labels.usePointStyle = true;
@@ -56,8 +62,11 @@ export default {
             windChart: {
                 chartData: {},
                 chartOptions: getBarChartConfig('Daily wind speed', 'Wind speed [m/s]')
+            },
+            percentageChart: {
+                chartData: {},
+                chartOptions: getBarChartConfig('Cloudiness, humidity and probability of precipitation', '[%]', '', 0, 100)
             }
-
         }
     },
     mounted() {
@@ -69,6 +78,7 @@ export default {
                 this.tempChart.chartData = dailyTempData(response.data.daily);
                 this.pressureChart.chartData = dailyPressure(response.data.daily);
                 this.windChart.chartData = dailyWind(response.data.daily);
+                this.percentageChart.chartData =  dailyPercentage(response.data.daily);
                 this.isLoading = false;
             })
             .catch(error => {
