@@ -32,7 +32,7 @@ import BarChart from './BarChart.vue';
 
 import axios from 'axios';
 import api from '../utils/api';
-import { dailyTempData, dailyPressure, dailyWind, dailyPercentage } from '../utils/formatDataFromApi';
+import { dailyTempData, dailyPressure, dailyWind, dailyPercentage,checkAttendance } from '../utils/formatDataFromApi';
 import { getBarChartConfig, getLineChartConfig } from '../utils/chartsConfig';
 
 Chart.defaults.global.legend.labels.usePointStyle = true;
@@ -50,6 +50,8 @@ export default {
     data() {
         return {
             isLoading: true,
+            isRain: false,
+            isSnow: false,
             OneCallResponse: {},
             tempChart: {
                 chartData: {},
@@ -71,6 +73,8 @@ export default {
     },
     mounted() {
         this.isLoading = true;
+        this.isRain = false;
+        this.isSnow = false;
         axios.get(`${api.main}${api.oneCall}?lat=${this.coord.lat}&lon=${this.coord.lon}&exclude=minutely,hourly,current${api.units}${api.key}`)
             .then(response => {
                 console.log(response.data.daily);
@@ -79,6 +83,8 @@ export default {
                 this.pressureChart.chartData = dailyPressure(response.data.daily);
                 this.windChart.chartData = dailyWind(response.data.daily);
                 this.percentageChart.chartData =  dailyPercentage(response.data.daily);
+                this.isRain = checkAttendance(response.data.daily, 'rain');
+                this.isSnow = checkAttendance(response.data.daily, 'snow');
                 this.isLoading = false;
             })
             .catch(error => {
