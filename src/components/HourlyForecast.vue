@@ -32,7 +32,7 @@ import BarChart from '../components/BarChart.vue';
 import axios from 'axios';
 import api from '../utils/api';
 import { getLineChartConfig, getBarChartConfig } from '../utils/chartsConfig';
-import { hourlyTempData, hourlyPressure, minHourlyPressure, hourlyWind, hourlyPercentage } from '../utils/formatDataFromApi';
+import { hourlyTempData, hourlyPressure, minHourlyPressure, hourlyWind, hourlyPercentage, checkAttendance } from '../utils/formatDataFromApi';
 
 export default {
     name: 'HourlyForecast',
@@ -47,6 +47,8 @@ export default {
     data() {
         return {
             isLoading: true,
+            isRain: false,
+            isSnow: false,
             OneCallResponse: {},
             tempChart: {
                 chartData: {},
@@ -68,6 +70,8 @@ export default {
     },
     mounted() {
         this.isLoading = true;
+        this.isRain = false;
+        this.isSnow = false;
         axios.get(`${api.main}${api.oneCall}?lat=${this.coord.lat}&lon=${this.coord.lon}&exclude=minutely,daily,current${api.units}${api.key}`)
             .then(response => {
                 console.log(response.data);
@@ -78,6 +82,8 @@ export default {
                 this.pressureChart.chartData = hourlyPressure(response.data.hourly);
                 this.windChart.chartData = hourlyWind(response.data.hourly);
                 this.percentageChart.chartData =  hourlyPercentage(response.data.hourly);
+                this.isRain = checkAttendance(response.data.hourly, 'rain');
+                this.isSnow = checkAttendance(response.data.hourly, 'snow');
                 this.isLoading = false;
             })
             .catch(error => {

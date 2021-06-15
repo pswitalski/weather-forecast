@@ -352,3 +352,15 @@ export const hourlyPercentage = (data) => {
     console.log(chartData)
     return chartData;
 }
+
+export const checkAttendance = (data, target) => {
+    console.log(data)
+    let isFound = false;
+
+    data.forEach(object => {
+        if (target in object) {
+            isFound = true
+        }
+    })
+    return isFound;
+}
