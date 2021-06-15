@@ -124,7 +124,7 @@ export const hourlyTempData = (data) => {
     return chartData;
 }
 
-export const getPressure = (data) => {
+export const dailyPressure = (data) => {
     const pressures = [];
     const days = [];
 
@@ -152,6 +152,40 @@ export const getPressure = (data) => {
     return chartData;
 }
 
-// export const hourlyPressure = (data) => {
-//     console.log(data)
-// }
+export const hourlyPressure = (data) => {
+    const pressures = [];
+    const hours = [];
+
+    data.forEach(object => {
+        pressures.push(object.pressure);
+
+        const unixTime = object.dt;
+        const date = new Date(unixTime * 1000);
+        const h = hour(date);
+        hours.push(h);
+    })
+
+    const chartData = {
+        labels: hours,
+        datasets: [{
+            label: 'Pressure',
+            data: pressures,
+            fill: false,
+            backgroundColor: 'cadetBlue',
+            borderColor: 'cadetBlue'
+        }, ],
+    }
+    return chartData;
+}
+
+export const minHourlyPressure = (data) => {
+    const pressures = [];
+
+    data.forEach(object => {
+        pressures.push(object.pressure)
+    })
+
+    const minimalPressure = Math.min(...pressures);
+
+    return minimalPressure;
+}

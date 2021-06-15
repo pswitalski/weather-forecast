@@ -1,5 +1,5 @@
 <template>
-  <div class="background"></div>
+  <!-- <div class="background"></div> -->
   <Header :route="isHome" />
   <LocationDisplay v-if="isHome !== '/'" :name="locationFromResponse" :country="countryFromResponse" :weather="weatherFromResponse" :temp="tempFromResponse" />
   <router-view @location-name="handleFindLocation" :targetLocation="this.location" :coord="this.coord" />

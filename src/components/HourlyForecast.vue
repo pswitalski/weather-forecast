@@ -8,7 +8,7 @@
 <div class="container">
     <LoadingSpinner v-if="isLoading" />
     <div v-if="!isLoading" class="chart-container">
-        <LineChart :chartData="pressureChart.chartData" :chartOptions="pressureChart.chartOptions" />
+        <BarChart :chartData="pressureChart.chartData" :chartOptions="pressureChart.chartOptions" />
     </div>
 </div>
 </template>
@@ -16,16 +16,18 @@
 <script>
 import LoadingSpinner from '../components/LoadingSpinner.vue';
 import LineChart from '../components/LineChart.vue';
+import BarChart from '../components/BarChart.vue';
 import axios from 'axios';
 import api from '../utils/api';
-import { getLineChartConfig } from '../utils/chartsConfig';
-import { hourlyTempData, getPressure } from '../utils/formatDataFromApi';
+import { getLineChartConfig, getBarChartConfig } from '../utils/chartsConfig';
+import { hourlyTempData, hourlyPressure, minHourlyPressure } from '../utils/formatDataFromApi';
 
 export default {
     name: 'HourlyForecast',
     components: {
         LoadingSpinner,
-        LineChart
+        LineChart,
+        BarChart
     },
     props: {
         coord: Object
@@ -40,7 +42,7 @@ export default {
             },
             pressureChart: {
                 chartData: {},
-                chartOptions: getLineChartConfig('Hourly pressure', 'Pressure [hPa]')
+                chartOptions: getBarChartConfig('Hourly pressure', 'Pressure [hPa]', 'Hours'),
             }
         }
     },
@@ -51,7 +53,9 @@ export default {
                 console.log(response.data);
                 this.OneCallResponse = response.data;
                 this.tempChart.chartData = hourlyTempData(response.data.hourly);
-                this.pressureChart.chartData = getPressure(response.data.hourly);
+                const minPressure = minHourlyPressure(response.data.hourly);
+                this.pressureChart.chartOptions = getBarChartConfig('Hourly pressure', 'Pressure [hPa]', 'Hours', minPressure)
+                this.pressureChart.chartData = hourlyPressure(response.data.hourly);
                 this.isLoading = false;
             })
             .catch(error => {

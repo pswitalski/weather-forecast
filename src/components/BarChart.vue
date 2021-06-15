@@ -1,10 +1,10 @@
 <script>
 import { defineComponent } from 'vue'
-import { Line } from 'vue3-chart-v2'
+import { Bar } from 'vue3-chart-v2'
 
 export default defineComponent({
-  name: 'LineChart',
-  extends: Line,
+  name: 'BarChart',
+  extends: Bar,
   props: {
       chartData: Object,
       chartOptions: Object
