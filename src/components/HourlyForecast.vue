@@ -23,6 +23,18 @@
         <BarChart :chartData="percentageChart.chartData" :chartOptions="percentageChart.chartOptions" />
     </div>
 </div>
+<div class="container" v-if="isSnow">
+    <LoadingSpinner v-if="isLoading" />
+    <div v-if="!isLoading" class="chart-container">
+        <BarChart :chartData="snowChart.chartData" :chartOptions="snowChart.chartOptions" />
+    </div>
+</div>
+<div class="container" v-if="isRain">
+    <LoadingSpinner v-if="isLoading" />
+    <div v-if="!isLoading" class="chart-container">
+        <BarChart :chartData="rainChart.chartData" :chartOptions="rainChart.chartOptions" />
+    </div>
+</div>
 </template>
 
 <script>
@@ -32,7 +44,7 @@ import BarChart from '../components/BarChart.vue';
 import axios from 'axios';
 import api from '../utils/api';
 import { getLineChartConfig, getBarChartConfig } from '../utils/chartsConfig';
-import { hourlyTempData, hourlyPressure, minHourlyPressure, hourlyWind, hourlyPercentage, checkAttendance } from '../utils/formatDataFromApi';
+import { hourlyTempData, hourlyPressure, minHourlyPressure, hourlyWind, hourlyPercentage, checkAttendance, hourlySnow, hourlyRain } from '../utils/formatDataFromApi';
 
 export default {
     name: 'HourlyForecast',
@@ -68,11 +80,11 @@ export default {
             },
             rainChart: {
                 chartData: {},
-                chartOptions: {}
+                chartOptions: getBarChartConfig('Rain volume', '[mm]')
             },
             snowChart: {
                 chartData: {},
-                chartOptions: {}
+                chartOptions: getBarChartConfig('Snow volume', '[mm]')
             }
         }
     },
@@ -92,6 +104,12 @@ export default {
                 this.percentageChart.chartData =  hourlyPercentage(response.data.hourly);
                 this.isRain = checkAttendance(response.data.hourly, 'rain');
                 this.isSnow = checkAttendance(response.data.hourly, 'snow');
+                if (this.isSnow) {
+                    this.snowChart.chartData = hourlySnow(response.data.hourly);
+                }
+                if (this.isRain) {
+                    this.rainChart.chartData = hourlyRain(response.data.hourly);
+                }
                 this.isLoading = false;
             })
             .catch(error => {

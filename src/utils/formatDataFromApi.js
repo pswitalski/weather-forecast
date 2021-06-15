@@ -426,3 +426,63 @@ export const dailyRain = (data) => {
     }
     return chartData;
 }
+
+export const hourlySnow = (data) => {
+    const hours = [];
+    const snows = [];
+    console.log(data);
+    data.forEach(object => {
+        const unixTime = object.dt;
+        const date = new Date(unixTime * 1000);
+        const h = hour(date);
+        hours.push(h);
+
+        if ('snow' in object) {
+            snows.push(object.snow["1h"])
+        } else {
+            snows.push(0)
+        }
+    })
+
+    const chartData = {
+        labels: hours,
+        datasets: [{
+            label: 'Snow volume',
+            data: snows,
+            fill: false,
+            backgroundColor: 'orange',
+            borderColor: 'orange',
+        }, ],
+    }
+    return chartData;
+}
+
+export const hourlyRain = (data) => {
+    const hours = [];
+    const rains = [];
+    console.log(data);
+    data.forEach(object => {
+        const unixTime = object.dt;
+        const date = new Date(unixTime * 1000);
+        const h = hour(date);
+        hours.push(h);
+
+        if ('rain' in object) {
+            rains.push(object.rain["1h"])
+        } else {
+            rains.push(0)
+        }
+    })
+
+    const chartData = {
+        labels: hours,
+        datasets: [{
+            label: 'Rain volume',
+            data: rains,
+            fill: false,
+            backgroundColor: 'orange',
+            borderColor: 'orange',
+        }, ],
+    }
+    return chartData;
+}
