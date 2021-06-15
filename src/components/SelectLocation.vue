@@ -88,10 +88,10 @@ export default {
                         return response;
                      })
                      .then(response => {
-                         console.log(response.data.main.temp)
+                         console.log(response.data)
                          if (response.status === 200) {
                          createCookie("locations", [...this.history, response.data.name]);
-                         this.$emit('location-name', [this.location, this.coord, response.data.name, response.data.sys.country, response.data.weather[0], response.data.main.temp ]);
+                         this.$emit('location-name', [this.location, this.coord, response.data.name, response.data.sys, response.data.weather[0], response.data.main.temp ]);
                          }
                      }
                      )

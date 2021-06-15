@@ -37,7 +37,7 @@ export default {
         console.log('api request');
         this.isLoading = true;
         console.log(this.targetLocation);
-        axios.get(`${api.main}${api.current}?q=${this.targetLocation}&units=metric&lang=pl${api.key}`)
+        axios.get(`${api.main}${api.current}?q=${this.targetLocation}&units=metric${api.key}`)
             .then(response => {
                 console.log(response.data);
                 this.currentTarget = response.data;

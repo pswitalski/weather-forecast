@@ -55,7 +55,17 @@ export const dayAndMonth = (date) => {
 }
 
 export const hour = (date) => {
-    console.log(date)
-    const hour = date.getHours()
+    const hour = date.getHours();
     return hour;
+}
+
+export const minute = (date) => {
+    let minute = date.getMinutes();
+    console.log(minute)
+    if (minute < 10) {
+        const digits = minute.toString().split('');
+        digits.unshift('0');
+        minute = digits.join('')
+    }
+    return minute;
 }

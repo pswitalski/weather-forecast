@@ -1,7 +1,8 @@
 import {
     dayOfTheWeek,
     dayAndMonth,
-    hour
+    hour,
+    minute
 } from './dateConverter';
 
 export const dailyTempData = (data) => {
@@ -243,4 +244,14 @@ export const hourlyWind = (data) => {
     }
 
     return chartData;
+}
+
+export const getEventHour = (data) => {
+
+    const unixTime = data;
+    const date = new Date(unixTime * 1000);
+
+    const h = hour(date);
+    const m = minute(date);
+    return `${h}:${m}`;
 }

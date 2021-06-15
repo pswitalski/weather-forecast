@@ -27,7 +27,7 @@ export default {
     return {
       location: '',
       locationFromResponse: '',
-      countryFromResponse: '',
+      countryFromResponse: {},
       weatherFromResponse: {},
       tempFromResponse: '',
       coord: {},
