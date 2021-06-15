@@ -217,3 +217,30 @@ export const dailyWind = (data) => {
 
     return chartData;
 }
+
+export const hourlyWind = (data) => {
+    const winds = [];
+    const hours = [];
+
+    data.forEach(object => {
+        winds.push(object.wind_speed);
+
+        const unixTime = object.dt;
+        const date = new Date(unixTime * 1000);
+        const h = hour(date);
+        hours.push(h);
+    })
+
+    const chartData = {
+        labels: hours,
+        datasets: [{
+            label: 'Wind speed',
+            data: winds,
+            fill: false,
+            backgroundColor: 'cyan',
+            borderColor: 'cyan',
+        }, ],
+    }
+
+    return chartData;
+}

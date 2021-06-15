@@ -11,6 +11,12 @@
         <BarChart :chartData="pressureChart.chartData" :chartOptions="pressureChart.chartOptions" />
     </div>
 </div>
+<div class="container">
+    <LoadingSpinner v-if="isLoading" />
+    <div v-if="!isLoading" class="chart-container">
+        <BarChart :chartData="windChart.chartData" :chartOptions="windChart.chartOptions" />
+    </div>
+</div>
 </template>
 
 <script>
@@ -20,7 +26,7 @@ import BarChart from '../components/BarChart.vue';
 import axios from 'axios';
 import api from '../utils/api';
 import { getLineChartConfig, getBarChartConfig } from '../utils/chartsConfig';
-import { hourlyTempData, hourlyPressure, minHourlyPressure } from '../utils/formatDataFromApi';
+import { hourlyTempData, hourlyPressure, minHourlyPressure, hourlyWind } from '../utils/formatDataFromApi';
 
 export default {
     name: 'HourlyForecast',
@@ -43,6 +49,10 @@ export default {
             pressureChart: {
                 chartData: {},
                 chartOptions: getBarChartConfig('Hourly pressure', 'Pressure [hPa]', 'Hours'),
+            },
+            windChart: {
+                chartData: {},
+                chartOptions: getBarChartConfig('Hourly wind speed', 'Wind speed [m/s]')
             }
         }
     },
@@ -56,6 +66,7 @@ export default {
                 const minPressure = minHourlyPressure(response.data.hourly);
                 this.pressureChart.chartOptions = getBarChartConfig('Hourly pressure', 'Pressure [hPa]', 'Hours', minPressure)
                 this.pressureChart.chartData = hourlyPressure(response.data.hourly);
+                this.windChart.chartData = hourlyWind(response.data.hourly);
                 this.isLoading = false;
             })
             .catch(error => {
