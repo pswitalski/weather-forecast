@@ -486,3 +486,18 @@ export const hourlyRain = (data) => {
     }
     return chartData;
 }
+
+export const getAirConditionGrade = (value) => {
+    switch (value) {
+        case 1:
+            return 'good';
+        case 2:
+            return 'fair';
+        case 3:
+            return 'moderate';
+        case 4:
+            return 'poor';
+        case 5:
+            return 'very poor'
+    }
+}

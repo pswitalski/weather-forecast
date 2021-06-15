@@ -2,6 +2,7 @@
     <div class="container">
         <LoadingSpinner v-if="isLoading" />
         <h2 v-if="!isLoading">Air polution</h2>
+        <h3 v-if="!isLoading">Overall air quality: {{airComment}}</h3>
         <ul v-if="!isLoading">
             <li v-for="(value, name) in airParams" :key="name">{{name}}: {{value}} ppm</li>
         </ul>
@@ -12,6 +13,7 @@
 import LoadingSpinner from './LoadingSpinner.vue';
 import axios from 'axios';
 import api from '../utils/api';
+import { getAirConditionGrade } from '../utils/formatDataFromApi';
 
 export default {
     name: "AirCondition",
@@ -21,7 +23,9 @@ export default {
     data() {
         return {
             isLoading: true,
-            airParams: {}
+            airParams: {},
+            airGrade: '',
+            airComment: ''
         }
     },
     props: {
@@ -32,9 +36,11 @@ export default {
         axios.get(`${api.main}${api.air}?lat=${this.coord.lat}&lon=${this.coord.lon}${api.key}`)
             .then(response => {
                 console.log(response.data)
-                this.airParams = response.data.list[0].components
+                this.airParams = response.data.list[0].components;
+                this.airGrade = response.data.list[0].main.aqi;
             })
             .then(() =>{
+                this.airComment = getAirConditionGrade(this.airGrade);
                 this.isLoading = false;
             })
             .catch(error => {
