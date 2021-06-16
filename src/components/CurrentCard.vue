@@ -1,6 +1,6 @@
 <template>
     <div class="container current-card">
-        <LoadingSpinner v-if="isLoading" />
+        <LoadingSpinner v-if="isLoading" class="loading" />
             <h2 v-if="!isLoading" >Current weather in {{currentTarget.name}}</h2>
             <ValueDisplay v-if="!isLoading" name="Apparent temperature" unit="°C" :value="currentTarget.main.feels_like.toFixed()" icon="temp" />
             <ValueDisplay v-if="!isLoading" name="Pressure" unit="hPa" :value="currentTarget.main.pressure" icon="pressure" />
@@ -66,10 +66,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .loading {
+        grid-column: 1/-1;
+    }
+
     .current-card {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 40px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 70px;
+        grid-column: 1/-1;
+
+        @media (min-width: 500px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: 1200px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (min-width: 1600px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
     }
 
     h2 {
@@ -79,5 +96,6 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 26px;
     }
 </style>

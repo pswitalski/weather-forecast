@@ -47,6 +47,7 @@ export default {
 
     h4 {
         font-size: 24px;
+        text-align: center;
     }
 
     img {
