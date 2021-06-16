@@ -7,7 +7,18 @@
     <section>
       <p>Authors of free icons used on this site:</p>
       <ul>
-        <li> Icon by <a href="https://freeicons.io/profile/3">icon king1</a> on <a href="https://freeicons.io">freeicons.io</a></li>
+        <li> <img src="../assets/icons/dew.png" alt="dew"> Icon by <a href="https://freeicons.io/profile/3">icon king1</a> on <a href="https://freeicons.io">freeicons.io</a></li>
+        <li> <img src="../assets/icons/windDeg.png" alt="wind-deg">Icon by <a href="https://freeicons.io/profile/730">Anu Rocks</a> on <a href="https://freeicons.io">freeicons.io</a></li>
+        <li> <img src="../assets/icons/pressure.png" alt="pressure">Icon by <a href="https://freeicons.io/profile/5989">Qaisir Mehmood</a> on <a href="https://freeicons.io">freeicons.io</a></li>
+        <li> <img src="../assets/icons/wind.png" alt="wind">Icon by <a href="https://freeicons.io/profile/2257">www.wishforge.games</a> on <a href="https://freeicons.io">freeicons.io</a></li>
+        <li><img src="../assets/icons/temp.png" alt="temp"> Icon by <a href="https://freeicons.io/profile/5790">ColourCreatype</a> on <a href="https://freeicons.io">freeicons.io</a></li>
+        <li><img src="../assets/icons/humidity.png" alt="humidity">Icon by <a href="https://freeicons.io/profile/5989">Qaisir Mehmood</a> on <a href="https://freeicons.io">freeicons.io</a></li>
+        <li><img src="../assets/icons/sunset.png" alt="sunset">Icon by <a href="https://freeicons.io/profile/3063">Oscar EstMont</a> on <a href="https://freeicons.io">freeicons.io</a></li>
+        <li><img src="../assets/icons/sunrise.png" alt="sunrise">Icon by <a href="https://freeicons.io/profile/3063">Oscar EstMont</a> on <a href="https://freeicons.io">freeicons.io</a></li>
+        <li><img src="../assets/icons/close.png" alt="close">Icon by <a href="https://freeicons.io/profile/3">icon king1</a> on <a href="https://freeicons.io">freeicons.io</a></li>
+        <li><img src="../assets/icons/menu.png" alt="menu">Icon by <a href="https://freeicons.io/profile/726">Free Preloaders</a> on <a href="https://freeicons.io">freeicons.io</a></li>
+        <li><img src="../assets/icons/loading.png" alt="loading">Icon by <a href="https://freeicons.io/profile/823">Muhammad Haq</a> on <a href="https://freeicons.io">freeicons.io</a></li>
+        <li><img src="../assets/logo/logo.png" alt="logo">Icon by <a href="https://freeicons.io/profile/3063">Oscar EstMont</a> on <a href="https://freeicons.io">freeicons.io</a></li>
       </ul>
     </section>
 
@@ -19,3 +30,29 @@ export default {
   name: 'About'
 }
 </script>
+
+<style lang="scss" scoped>
+  h1 {
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+  }
+
+  img {
+    height: 30px;
+    margin: 2px;
+  }
+
+  a {
+    padding: 0 5px;
+    color: black
+  }
+
+</style>
