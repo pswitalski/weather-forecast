@@ -24,6 +24,7 @@ export default {
 <style lang="scss" scoped>
     div {
         text-align: center;
+        grid-row: 3/4;
     }
 
     ul {

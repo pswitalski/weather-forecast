@@ -74,7 +74,7 @@ html {
   position: relative;
   min-height: 100vh;
   display: grid;
-  grid-template-rows: 50px auto auto auto auto auto 40px;
+  grid-template-rows: 50px auto auto 40px;
 
 }
 

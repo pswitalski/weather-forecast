@@ -53,10 +53,14 @@ export default {
 
 <style lang="scss" scoped>
   div {
-    color: rgba($color: rgb(248, 238, 238), $alpha: .9)
+    color: rgba($color: rgb(248, 238, 238), $alpha: .9);
+    grid-row: 2/3;
+    grid-column: 1/-1;
     }
 
-    .container {
+  .container {
+  display: flex;
+  flex-direction: column;
   width: auto;
   height: auto;
   margin: 20px;
@@ -69,6 +73,10 @@ export default {
 
 .home, .location-history {
   transform: translateY(-50px);
+}
+
+.location-history {
+  grid-row: 3/4;
 }
 
 @keyframes enter {
