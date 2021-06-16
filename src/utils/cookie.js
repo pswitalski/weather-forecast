@@ -1,5 +1,5 @@
-export const createCookie = (key, value, date) => {
-    const cookie = encodeURI(key) + "=" + encodeURI(value);
+export const createCookie = (key, value) => {
+    const cookie = encodeURI(key) + "=" + encodeURI(value) + "; max-age=604800";
 
     document.cookie = cookie;
 
