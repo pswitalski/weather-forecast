@@ -14,11 +14,17 @@ export default {
 <style lang="scss" scoped>
     footer {
         width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: red;
         text-align: center;
-        position: absolute;
-        left: 0;
-        bottom: 0;
+        // position: absolute;
+        // left: 0;
+        // bottom: 0;
+        grid-row: -1/-2;
+        grid-column: 1/-1;
         padding: 4px;
         transition: opacity 0.9;
         transition: transform 0.3s;

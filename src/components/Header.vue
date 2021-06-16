@@ -31,6 +31,8 @@ export default {
         height: 50px;
         background-color: green;
         transition: transform 0.3s;
+        grid-row: 1/2;
+        grid-column: 1/-1;
     }
 
     header.home {

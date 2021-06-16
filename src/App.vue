@@ -73,7 +73,9 @@ html {
 #app {
   position: relative;
   min-height: 100vh;
-  // padding-bottom: 1px
+  display: grid;
+  grid-template-rows: 50px auto auto auto auto auto 40px;
+
 }
 
 // #app::before {
