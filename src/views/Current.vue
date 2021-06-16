@@ -1,7 +1,7 @@
 <template>
     <div class="current">
         <CurrentCard :targetLocation="targetLocation" />
-        <AirCondition :coord="coord" />
+
     </div>
 </template>
 

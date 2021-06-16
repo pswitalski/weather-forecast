@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <LoadingSpinner v-if="isLoading" />
-            <h2 v-if="!isLoading" >{{currentTarget.name}}, {{currentTarget.sys.country}}</h2>
+            <h2 v-if="!isLoading" >Current weather in {{currentTarget.name}}</h2>
             <p v-if="!isLoading" >Temperature: {{currentTarget.main.temp.toFixed()}}&deg;C</p>
             <p v-if="!isLoading" >Feels like: {{currentTarget.main.feels_like.toFixed()}}&deg;C</p>
             <p v-if="!isLoading" >Today's maximum temperature: {{currentTarget.main.temp_max.toFixed()}}&deg;C</p>
@@ -11,6 +11,12 @@
             <p v-if="!isLoading" >Wind speed: {{currentTarget.wind.speed}} m/s</p>
             <p v-if="!isLoading" >Weather: {{currentTarget.weather[0].description}}</p>
             <p v-if="!isLoading" >icon</p>
+            <p v-if="!isLoading" >visibility: {{currentTarget.visibility}} m</p>
+            <p v-if="!isLoading" >dew point</p>
+            <p v-if="!isLoading" >wind deg: {{currentTarget.wind.deg}}</p>
+            <p v-if="!isLoading" >UV</p>
+
+
     </div>
 </template>
 
