@@ -36,6 +36,11 @@
         h1 {
             font-size: 32px;
         }
+
+        img {
+        height: 200px;
+        width: auto;
+        }
     }
 
     img {
@@ -45,5 +50,6 @@
 
     h1 {
         font-size: 16px;
+        text-align: center;
     }
 </style>
