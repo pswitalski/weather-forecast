@@ -2,25 +2,12 @@
     <div class="container current-card">
         <LoadingSpinner v-if="isLoading" />
             <h2 v-if="!isLoading" >Current weather in {{currentTarget.name}}</h2>
-            <!-- <p v-if="!isLoading" >Temperature: {{currentTarget.main.temp.toFixed()}}&deg;C</p>
-
-
-snow
-
-
-
-            <p v-if="!isLoading" >Weather: {{currentTarget.weather[0].description}}</p>
-            <p v-if="!isLoading" >icon</p>
-            <p v-if="!isLoading" >visibility: {{currentTarget.visibility}} m</p>
-            <p v-if="!isLoading" >dew point</p>
-            <p v-if="!isLoading" >wind deg: {{currentTarget.wind.deg}}</p>
-            <p v-if="!isLoading" >UV</p> -->
-
             <ValueDisplay v-if="!isLoading" name="Apparent temperature" unit="°C" :value="currentTarget.main.feels_like.toFixed()" icon="temp" />
             <ValueDisplay v-if="!isLoading" name="Pressure" unit="hPa" :value="currentTarget.main.pressure" icon="pressure" />
             <ValueDisplay v-if="!isLoading" name="Wind speed" unit="m/s" :value="currentTarget.wind.speed" icon="wind" />
+            <ValueDisplay v-if="!isLoading" name="Wind deg" unit="deg" :value="currentTarget.wind.deg" icon="windDeg" :animation="true" />
             <ValueDisplay v-if="!isLoading" name="Humidity" unit="%" :value="currentTarget.main.humidity" icon="humidity" />
-
+            <ValueDisplay v-if="!isLoading" name="Visibility" unit="m" :value="currentTarget.visibility" icon="visibility" />
             <ValueDisplay v-if="!isLoading && isSnow" name="Snow" unit="mm" :value="currentTarget.snow['1h']" icon="snow" />
             <ValueDisplay v-if="!isLoading && isRain" name="Rain" unit="mm" :value="currentTarget.rain['1h']" icon="rain" />
     </div>

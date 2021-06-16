@@ -21,6 +21,7 @@
         <li><img src="../assets/logo/logo.png" alt="logo">Icon by <a href="https://freeicons.io/profile/3063">Oscar EstMont</a> on <a href="https://freeicons.io">freeicons.io</a></li>
         <li><img src="../assets/icons/rain.png" alt="raing">Icon by <a href="https://freeicons.io/profile/714">Raj Dev</a> on <a href="https://freeicons.io">freeicons.io</a></li>
         <li><img src="../assets/icons/snow.png" alt="snow">Icon by <a href="https://freeicons.io/profile/2257">www.wishforge.games</a> on <a href="https://freeicons.io">freeicons.io</a></li>
+        <li><img src="../assets/icons/visibility.png" alt="visibility"> Icon by <a href="https://freeicons.io/profile/823">Muhammad Haq</a> on <a href="https://freeicons.io">freeicons.io</a></li>
       </ul>
     </section>
 
