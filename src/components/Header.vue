@@ -33,13 +33,26 @@ export default {
         transition: transform 0.3s;
         grid-row: 1/2;
         grid-column: 1/-1;
+        animation: enter;
+        animation-duration: 0.5s;
     }
 
     header.home {
-        transform: translateY(-50px);
+        // transform: translateY(-50px);
+        display: none;
 
         @media (max-width: 799px) {
-            transform: translateY(-100px) scale(0);
+            // transform: translateY(-100px) scale(0);
+            // transform: scale(0);
+        }
+    }
+
+    @keyframes enter {
+        from {
+            transform: scale(0)
+        }
+        to {
+            transform: none;
         }
     }
 </style>

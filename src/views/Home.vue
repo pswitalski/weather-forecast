@@ -72,7 +72,7 @@ export default {
 }
 
 .home, .location-history {
-  transform: translateY(-50px);
+  // transform: translateY(-50px);
 }
 
 .location-history {

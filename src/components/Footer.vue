@@ -14,7 +14,7 @@ export default {
 <style lang="scss" scoped>
     footer {
         width: 100%;
-        height: 100%;
+        height: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -28,10 +28,21 @@ export default {
         padding: 4px;
         transition: opacity 0.9;
         transition: transform 0.3s;
+        animation: enter;
+        animation-duration: 0.5s;
     }
 
     footer.home {
-        transform: scale(0);
-        // display: none;
+        // transform: scale(0);
+        display: none;
+    }
+
+    @keyframes enter {
+        from {
+            transform: scale(0)
+        }
+        to {
+            transform: none;
+        }
     }
 </style>
