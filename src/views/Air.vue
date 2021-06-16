@@ -1,5 +1,5 @@
 <template>
-    <div class="air">
+    <div class="air content">
         <AirCondition :coord="coord" />
     </div>
 </template>

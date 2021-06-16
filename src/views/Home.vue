@@ -77,6 +77,7 @@ export default {
 
 .location-history {
   grid-row: 3/4;
+  max-height: 230px;
 }
 
 @keyframes enter {

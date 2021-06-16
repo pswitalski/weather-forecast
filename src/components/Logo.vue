@@ -35,11 +35,20 @@
 
         h1 {
             font-size: 32px;
+
+            @media (max-width: 800px) {
+                font-size: 28px;
+            }
         }
 
         img {
         height: 200px;
         width: auto;
+
+        @media (max-width: 800px) {
+            height: 100px;
+        }
+
         }
     }
 

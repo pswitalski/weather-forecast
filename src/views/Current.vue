@@ -1,5 +1,5 @@
 <template>
-    <div class="current">
+    <div class="current content">
         <CurrentCard :targetLocation="targetLocation" />
 
     </div>

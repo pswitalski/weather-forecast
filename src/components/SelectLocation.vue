@@ -115,7 +115,7 @@ export default {
     }
 
     h2 {
-        font-size: 18px;
+        font-size: 14px;
 
         @media (min-width: 800px) {
             font-size: 22px;

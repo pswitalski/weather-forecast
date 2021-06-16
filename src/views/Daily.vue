@@ -1,5 +1,5 @@
 <template>
-    <div class="forecast">
+    <div class="forecast content">
         <DailyForecast :coord="coord" />
     </div>
 </template>

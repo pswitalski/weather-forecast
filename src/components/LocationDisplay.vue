@@ -51,6 +51,7 @@ export default {
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
+        grid-column: 1/-1;
     }
     .info {
         display: flex;

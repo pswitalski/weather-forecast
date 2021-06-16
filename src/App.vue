@@ -75,7 +75,15 @@ html {
   min-height: 100vh;
   display: grid;
   grid-template-rows: min-content min-content auto min-content;
+}
 
+.content {
+  display: grid;
+  grid-template-columns: auto;
+
+  @media (min-width: 1200px) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
 }
 
 // #app::before {
