@@ -2,7 +2,7 @@
     <div class="value-display" >
         <div class="name">
             <h4>{{name}}</h4>
-            <img src="../assets/icons/pressure.png" alt="pressure">
+            <img :src="require(`../assets/icons/${icon}.png`)" :alt="name">
         </div>
         <div class="counter">
             <p class="value">{{value}}</p>
@@ -17,7 +17,8 @@ export default {
     props: {
         name: String,
         unit: String,
-        value: Number
+        value:Number,
+        icon: String
     }
 }
 </script>
