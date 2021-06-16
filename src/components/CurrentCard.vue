@@ -1,12 +1,11 @@
 <template>
-    <div class="container">
+    <div class="container current-card">
         <LoadingSpinner v-if="isLoading" />
             <h2 v-if="!isLoading" >Current weather in {{currentTarget.name}}</h2>
-            <p v-if="!isLoading" >Temperature: {{currentTarget.main.temp.toFixed()}}&deg;C</p>
+            <!-- <p v-if="!isLoading" >Temperature: {{currentTarget.main.temp.toFixed()}}&deg;C</p>
             <p v-if="!isLoading" >Feels like: {{currentTarget.main.feels_like.toFixed()}}&deg;C</p>
-            <p v-if="!isLoading" >Today's maximum temperature: {{currentTarget.main.temp_max.toFixed()}}&deg;C</p>
-            <p v-if="!isLoading" >Today's mainimum temperature: {{currentTarget.main.temp_min.toFixed()}}&deg;C</p>
-            <p v-if="!isLoading" >Pressure: {{currentTarget.main.pressure}} hPa</p>
+
+
             <p v-if="!isLoading" >Humidity: {{currentTarget.main.humidity}}%</p>
             <p v-if="!isLoading" >Wind speed: {{currentTarget.wind.speed}} m/s</p>
             <p v-if="!isLoading" >Weather: {{currentTarget.weather[0].description}}</p>
@@ -14,21 +13,27 @@
             <p v-if="!isLoading" >visibility: {{currentTarget.visibility}} m</p>
             <p v-if="!isLoading" >dew point</p>
             <p v-if="!isLoading" >wind deg: {{currentTarget.wind.deg}}</p>
-            <p v-if="!isLoading" >UV</p>
+            <p v-if="!isLoading" >UV</p> -->
 
-
+            <ValueDisplay v-if="!isLoading" name="Pressure" unit="hPa" :value="currentTarget.main.pressure" />
+            <ValueDisplay v-if="!isLoading" name="Pressure" unit="hPa" :value="currentTarget.main.pressure" />
+            <ValueDisplay v-if="!isLoading" name="Pressure" unit="hPa" :value="currentTarget.main.pressure" />
+            <ValueDisplay v-if="!isLoading" name="Pressure" unit="hPa" :value="currentTarget.main.pressure" />
+            <ValueDisplay v-if="!isLoading" name="Pressure" unit="hPa" :value="currentTarget.main.pressure" />
     </div>
 </template>
 
 <script>
 import LoadingSpinner from '../components/LoadingSpinner.vue';
+import ValueDisplay from '../components/ValueDisplay.vue';
 import axios from 'axios';
 import api from '../utils/api';
 
 export default {
     name: 'CurrentCard',
     components: {
-        LoadingSpinner
+        LoadingSpinner,
+        ValueDisplay
     },
     props: {
         targetLocation: String
@@ -58,3 +63,20 @@ export default {
 
 }
 </script>
+
+<style lang="scss" scoped>
+    .current-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 40px;
+    }
+
+    h2 {
+        grid-column: 1/-1;
+        text-align: center;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
