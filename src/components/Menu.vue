@@ -5,6 +5,7 @@
         <li><router-link to="/hourly">Hourly Forecast</router-link></li>
         <li><router-link to="/daily">Daily Forecast</router-link></li>
         <li><router-link to="/air">Air Condition</router-link></li>
+        <li><router-link to="/about">About</router-link></li>
         <li><button @click="closeMenuHandler"><img :src="closeIcon" alt="close menu" class="closeMenu"></button></li>
     </ul>
 </template>
