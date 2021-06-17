@@ -73,8 +73,23 @@ export default {
 
 <style lang="scss" scoped>
     .container {
+        grid-column: 1/-1;
+
         display: grid;
         grid-template-rows: 40px 40px;
+        grid-template-columns: 1fr;
+
+        @media (min-width: 500px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: 1200px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (min-width: 1600px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
     }
 
     h2 {
@@ -93,5 +108,9 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    span {
+        margin-left: 5px;
     }
 </style>

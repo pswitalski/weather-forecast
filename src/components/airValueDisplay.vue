@@ -48,14 +48,12 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: pink;
 }
 
 .value-container {
     position: relative;
-    background-color: red;
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
 }
 
 .value-background {
@@ -74,5 +72,10 @@ export default {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+}
+
+h4 {
+    font-size: 24px;
+    text-align: center;
 }
 </style>
