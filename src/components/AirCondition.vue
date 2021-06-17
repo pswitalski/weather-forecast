@@ -2,7 +2,7 @@
     <div class="container">
         <LoadingSpinner v-if="isLoading" />
         <h2 v-if="!isLoading">Air polution</h2>
-        <h3 v-if="!isLoading">Overall air quality: {{airComment}}</h3>
+        <h3 v-if="!isLoading">Overall air quality: <span :style="{color: 'red'}" >{{airComment}}</span></h3>
         <ul v-if="!isLoading">
             <li v-for="(value, name) in airParams" :key="name">{{name}}: {{value}} ppm</li>
         </ul>
@@ -30,6 +30,16 @@ export default {
     },
     props: {
         coord: Object
+    },
+    computed: {
+        gradeColor() {
+            switch (this.airGrade) {
+                case 1:
+                    return 'green';
+                case 2:
+                    return 'darkgreen'
+            }
+        }
     },
     mounted() {
         console.log(this.coord);
