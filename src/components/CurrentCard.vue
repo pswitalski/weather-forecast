@@ -5,7 +5,7 @@
             <ValueDisplay v-if="!isLoading" name="Apparent temperature" unit="°C" :value="currentTarget.main.feels_like.toFixed()" icon="temp" />
             <ValueDisplay v-if="!isLoading" name="Pressure" unit="hPa" :value="currentTarget.main.pressure" icon="pressure" />
             <ValueDisplay v-if="!isLoading" name="Wind speed" unit="m/s" :value="currentTarget.wind.speed" icon="wind" />
-            <ValueDisplay v-if="!isLoading" name="Wind deg" unit="deg" :value="currentTarget.wind.deg" icon="windDeg" :animation="true" />
+            <ValueDisplay v-if="!isLoading" name="Wind direction" unit="deg" :value="currentTarget.wind.deg" icon="windDeg" :animation="true" />
             <ValueDisplay v-if="!isLoading" name="Humidity" unit="%" :value="currentTarget.main.humidity" icon="humidity" />
             <ValueDisplay v-if="!isLoading" name="Visibility" unit="m" :value="currentTarget.visibility" icon="visibility" />
             <ValueDisplay v-if="!isLoading && isSnow" name="Snow" unit="mm" :value="currentTarget.snow['1h']" icon="snow" />
