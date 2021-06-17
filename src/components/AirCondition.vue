@@ -53,10 +53,10 @@ export default {
         }
     },
     mounted() {
-        console.log(this.coord);
+        // console.log(this.coord);
         axios.get(`${api.main}${api.air}?lat=${this.coord.lat}&lon=${this.coord.lon}${api.key}`)
             .then(response => {
-                console.log(response.data)
+                // console.log(response.data)
                 this.airParams = response.data.list[0].components;
                 this.airGrade = response.data.list[0].main.aqi;
             })

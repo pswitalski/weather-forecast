@@ -61,7 +61,7 @@ export const hour = (date) => {
 
 export const minute = (date) => {
     let minute = date.getMinutes();
-    console.log(minute)
+    // console.log(minute)
     if (minute < 10) {
         const digits = minute.toString().split('');
         digits.unshift('0');

@@ -40,12 +40,12 @@ export default {
     mounted() {
         this.isSnow = false;
         this.isRain = false;
-        console.log('api request');
+        // console.log('api request');
         this.isLoading = true;
-        console.log(this.targetLocation);
+        // console.log(this.targetLocation);
         axios.get(`${api.main}${api.current}?q=${this.targetLocation}&units=metric${api.key}`)
             .then(response => {
-                console.log(response.data);
+                // console.log(response.data);
                 this.currentTarget = response.data;
                 if ('snow' in response.data) {
                     this.isSnow = true;

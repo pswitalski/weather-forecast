@@ -56,7 +56,7 @@ export default {
     if (cookieStatus) {
       this.isCookiesAccepted = true;
     }
-  }
+  },
 }
 </script>
 

@@ -14,9 +14,6 @@
 export default {
     name: "AirValueDisplay",
     props: ['name', 'value'],
-    mounted() {
-        console.log(this.name)
-    },
     computed: {
         sub() {
             const letters = this.name.split('');

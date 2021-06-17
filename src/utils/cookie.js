@@ -2,8 +2,6 @@ export const createCookie = (key, value) => {
     const cookie = encodeURI(key) + "=" + encodeURI(value) + "; max-age=604800";
 
     document.cookie = cookie;
-
-    console.log(cookie);
 }
 
 export const readCookie = (name) => {

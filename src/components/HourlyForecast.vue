@@ -94,7 +94,7 @@ export default {
         this.isSnow = false;
         axios.get(`${api.main}${api.oneCall}?lat=${this.coord.lat}&lon=${this.coord.lon}&exclude=minutely,daily,current${api.units}${api.key}`)
             .then(response => {
-                console.log(response.data);
+                // console.log(response.data);
                 this.OneCallResponse = response.data;
                 this.tempChart.chartData = hourlyTempData(response.data.hourly);
                 const minPressure = minHourlyPressure(response.data.hourly);
