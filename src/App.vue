@@ -4,19 +4,24 @@
   <LocationDisplay v-if="isHome !== '/'" :name="locationFromResponse" :country="countryFromResponse" :weather="weatherFromResponse" :temp="tempFromResponse" />
   <router-view @location-name="handleFindLocation" :targetLocation="this.location" :coord="this.coord" />
   <Footer :route="isHome" />
+<CookieInfo v-if="!isCookiesAccepted" />
 </template>
 
 <script>
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
 import LocationDisplay from './components/LocationDisplay.vue';
+import CookieInfo from './components/CookieInfo.vue';
+
+import { readCookie } from './utils/cookie';
 
 export default {
   name: 'App',
   components: {
     Header,
     Footer,
-    LocationDisplay
+    LocationDisplay,
+    CookieInfo
   },
   computed: {
     isHome() {
@@ -31,7 +36,8 @@ export default {
       weatherFromResponse: {},
       tempFromResponse: '',
       coord: {},
-      time: ''
+      time: '',
+      isCookiesAccepted: false
     }
   },
   methods: {
@@ -43,6 +49,12 @@ export default {
       this.weatherFromResponse = data[4];
       this.tempFromResponse = data[5];
       this.$router.push('/current');
+    }
+  },
+  mounted() {
+    const cookieStatus = readCookie('cookiesAccepted');
+    if (cookieStatus) {
+      this.isCookiesAccepted = true;
     }
   }
 }
