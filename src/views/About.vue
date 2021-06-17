@@ -22,6 +22,7 @@
         <li><img src="../assets/icons/rain.png" alt="raing">Icon by <a href="https://freeicons.io/profile/714">Raj Dev</a> on <a href="https://freeicons.io">freeicons.io</a></li>
         <li><img src="../assets/icons/snow.png" alt="snow">Icon by <a href="https://freeicons.io/profile/2257">www.wishforge.games</a> on <a href="https://freeicons.io">freeicons.io</a></li>
         <li><img src="../assets/icons/visibility.png" alt="visibility"> Icon by <a href="https://freeicons.io/profile/823">Muhammad Haq</a> on <a href="https://freeicons.io">freeicons.io</a></li>
+        <li><img src="../assets/icons/cloud.png" alt="cloud"> Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></li>
       </ul>
     </section>
 
