@@ -61,7 +61,7 @@ export const dailyTempData = (data) => {
             },
         ],
     }
-    console.log(chartData)
+    // console.log(chartData)
     return chartData;
 }
 
@@ -70,7 +70,7 @@ export const hourlyTempData = (data) => {
     const feels = [];
     const hours = [];
 
-    console.log(data);
+    // console.log(data);
 
     data.forEach(object => {
         temps.push(object.temp);
@@ -108,7 +108,7 @@ export const hourlyTempData = (data) => {
             }
         ],
     }
-    console.log(chartData)
+    // console.log(chartData)
     return chartData;
 }
 
@@ -255,7 +255,7 @@ export const dailyPercentage = (data) => {
     const humidity = [];
     const precipitation = [];
 
-    console.log(data)
+    // console.log(data)
 
     data.forEach(object => {
         const unixTime = object.dt;
@@ -294,7 +294,7 @@ export const dailyPercentage = (data) => {
             }
         ],
     }
-    console.log(chartData)
+    // console.log(chartData)
     return chartData;
 }
 
@@ -304,7 +304,7 @@ export const hourlyPercentage = (data) => {
     const humidity = [];
     const precipitation = [];
 
-    console.log(data)
+    // console.log(data)
 
     data.forEach(object => {
         const unixTime = object.dt;
@@ -347,12 +347,12 @@ export const hourlyPercentage = (data) => {
             }
         ],
     }
-    console.log(chartData)
+    // console.log(chartData)
     return chartData;
 }
 
 export const checkAttendance = (data, target) => {
-    console.log(data)
+    // console.log(data)
     let isFound = false;
 
     data.forEach(object => {
@@ -366,7 +366,7 @@ export const checkAttendance = (data, target) => {
 export const dailySnow = (data) => {
     const days = [];
     const snows = [];
-    console.log(data);
+    // console.log(data);
     data.forEach(object => {
         const unixTime = object.dt;
         const date = new Date(unixTime * 1000);
@@ -397,7 +397,7 @@ export const dailySnow = (data) => {
 export const dailyRain = (data) => {
     const days = [];
     const rains = [];
-    console.log(data);
+    // console.log(data);
     data.forEach(object => {
         const unixTime = object.dt;
         const date = new Date(unixTime * 1000);
@@ -428,7 +428,7 @@ export const dailyRain = (data) => {
 export const hourlySnow = (data) => {
     const hours = [];
     const snows = [];
-    console.log(data);
+    // console.log(data);
     data.forEach(object => {
         const unixTime = object.dt;
         const date = new Date(unixTime * 1000);
@@ -461,7 +461,7 @@ export const hourlySnow = (data) => {
 export const hourlyRain = (data) => {
     const hours = [];
     const rains = [];
-    console.log(data);
+    // console.log(data);
     data.forEach(object => {
         const unixTime = object.dt;
         const date = new Date(unixTime * 1000);

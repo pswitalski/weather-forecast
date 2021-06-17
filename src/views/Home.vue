@@ -44,7 +44,7 @@ export default {
           const deleteCount = history.length - 5;
           history.splice(0, deleteCount);
         }
-        console.log(history)
+        // console.log(history)
         this.history = history;
 
     },
