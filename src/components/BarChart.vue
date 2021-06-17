@@ -14,6 +14,9 @@ export default defineComponent({
     this.renderChart(this.chartData,
     this.chartOptions
     )
+  },
+  beforeUnmount() {
+    return
   }
 })
 </script>

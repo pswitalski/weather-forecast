@@ -329,7 +329,7 @@ export const hourlyPercentage = (data) => {
                 data: clouds,
                 fill: false,
                 backgroundColor: 'orange',
-                borderColor: 'orange'
+                borderColor: 'orange',
             },
             {
                 label: 'Humidity',
