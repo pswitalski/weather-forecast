@@ -38,15 +38,16 @@ export default {
         align-items: center;
         justify-content: space-between;
         padding: 0 20px;
-
+        transform: scale(0);
         height: 100%;
         width: 100%;
 
         @media (max-width: 799px) {
+
             position: fixed;
             top: -50%;
             left: 50%;
-            transform: translate(-50%, 200%);
+            transform: translate(-50%, 200%) scale(0);
             flex-direction: column;
             width: 80%;
             height: 80%;
@@ -55,6 +56,10 @@ export default {
             transition: transform .3s;
             z-index: 10;
             background-color: rgba($color: #174685, $alpha: 1);
+        }
+
+        @media (min-width: 800px) {
+            transform: scale(1);
         }
     }
 
