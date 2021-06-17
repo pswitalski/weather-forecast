@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <LoadingSpinner v-if="isLoading" />
+        <LoadingSpinner v-if="isLoading" class="loading" />
         <h2 v-if="!isLoading">Air polution</h2>
         <h3 v-if="!isLoading">Overall air quality: <span :style="{color: gradeColor}" >{{airComment}}</span></h3>
         <!-- <ul v-if="!isLoading">
@@ -112,5 +112,9 @@ export default {
 
     span {
         margin-left: 5px;
+    }
+
+    .loading {
+        grid-column: 1/-1;
     }
 </style>

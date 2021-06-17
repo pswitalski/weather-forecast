@@ -38,7 +38,7 @@ export default {
         align-items: center;
         justify-content: space-between;
         padding: 0 20px;
-        background-color: blue;
+
         height: 100%;
         width: 100%;
 
@@ -54,6 +54,7 @@ export default {
             justify-content: space-around;
             transition: transform .3s;
             z-index: 10;
+            background-color: rgba($color: #174685, $alpha: 1);
         }
     }
 
@@ -102,7 +103,7 @@ export default {
 
     a {
         text-decoration: none;
-        color: black;
+        color: white;
         transition: transform 0.4s;
     }
 
@@ -122,7 +123,7 @@ export default {
         bottom: 0;
         margin: auto auto 0;
         content: ' ';
-        background-color: black;
+        background-color: white;
         z-index: 1000;
         animation: after 0.4s;
     }

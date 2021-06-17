@@ -3,6 +3,7 @@
     <h1>About</h1>
     <section>
       <p>All weather data comes from the Open Weather API.</p>
+      Background image: <a href="https://pixabay.com/pl/users/felixmittermeier-4397258/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3625405"> FelixMittermeier</a> from <a href="https://pixabay.com/pl/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3625405"> Pixabay</a>
     </section>
     <section>
       <p>Authors of free icons used on this site:</p>
@@ -36,6 +37,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  div {
+    font-size: 12px;
+    text-align: center;
+  }
+
   h1 {
     text-align: center;
   }
@@ -47,16 +53,17 @@ export default {
   li {
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   img {
-    height: 30px;
+    height: 28px;
     margin: 2px;
   }
 
   a {
     padding: 0 5px;
-    color: black
+    color: white;
   }
 
 </style>

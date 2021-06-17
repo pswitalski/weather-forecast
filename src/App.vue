@@ -61,6 +61,7 @@ export default {
 
 html {
   font-family: "Poppins", Helvetica, Arial, sans-serif;
+  color: white;
   // height: fit-content;
   //  background-image: url('./assets/img/background/background_comporessed.jpg');
   // background-size: cover;
@@ -104,7 +105,7 @@ html {
   left: 0;
   top: 0;
   z-index: -10;
-  background-image: url('./assets/img/background/background_comporessed.jpg');
+  background-image: url('./assets/img/background/thunderstorm.jpg');
   background-size: cover;
   background-position: center center;
   filter: grayscale(40%);
@@ -116,7 +117,9 @@ html {
   margin: 20px;
   padding: 14px;
   border-radius: 30px;
-  background-color: rgba($color: #141414, $alpha: 0.7);
+  // background-color: rgba($color: #141414, $alpha: 0.7);
+  // background-color: rgba($color: #1c70df, $alpha: 0.7);
+  background-color: rgba($color: #1c70df, $alpha: 0.5);
   animation: enter;
   animation-duration: 0.5s;
 }

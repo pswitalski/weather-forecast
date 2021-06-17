@@ -66,7 +66,8 @@ export default {
   margin: 20px;
   padding: 14px;
   border-radius: 30px;
-  background-color: rgba($color: #141414, $alpha: 0.7);
+  // background-color: rgba($color: #141414, $alpha: 0.7);
+    background-color: transparent;
   animation: enter;
   animation-duration: 0.5s;
 }

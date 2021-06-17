@@ -18,7 +18,7 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: red;
+        background-color: rgba($color: #1c70df, $alpha: 0.5);
         text-align: center;
         // position: absolute;
         // left: 0;

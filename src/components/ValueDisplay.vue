@@ -51,6 +51,7 @@ export default {
 
     img {
         height: 50px;
+        filter: invert(1);
     }
 
     img.animated {
