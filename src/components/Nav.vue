@@ -25,6 +25,11 @@ export default {
         openMenuHandler() {
             this.isMenuOpen = !this.isMenuOpen;
         },
+    },
+    watch: {
+        $route() {
+            this.isMenuOpen = false;
+        }
     }
 }
 </script>
