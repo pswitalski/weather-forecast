@@ -15,7 +15,7 @@
             }
         },
         props: {
-            isHome: Boolean
+            isHome: String
         }
     }
 </script>
