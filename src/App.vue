@@ -122,6 +122,9 @@ html {
   background-color: rgba($color: #1c70df, $alpha: 0.5);
   animation: enter;
   animation-duration: 0.5s;
+  overflow: hidden;
+  position: relative;
+  // overflow-x: scroll;
 }
 
 @keyframes enter {

@@ -12,15 +12,6 @@ export const dailyTempData = (data) => {
     const min = [];
     const max = [];
     const feels = [];
-    // const pressure = [];
-
-    // const windSpeed = [];
-
-    // const cloudiness = [];
-    // const rain = [];
-    // const precipitation = [];
-    // const humidity = [];
-
 
     data.forEach(day => {
         temps.push(day.temp.day);
@@ -46,8 +37,6 @@ export const dailyTempData = (data) => {
                 fill: false,
                 backgroundColor: 'orange',
                 borderColor: 'orange',
-                // pointRadius: 5,
-                // pointHoverRadius: 7
             },
             {
                 label: 'Apparent Temp.',
@@ -55,8 +44,6 @@ export const dailyTempData = (data) => {
                 fill: false,
                 backgroundColor: 'green',
                 borderColor: 'green',
-                // pointRadius: 5,
-                // pointHoverRadius: 7
             },
             {
                 label: 'Min',
@@ -64,8 +51,6 @@ export const dailyTempData = (data) => {
                 fill: false,
                 backgroundColor: 'cyan',
                 borderColor: 'cyan',
-                // pointRadius: 5,
-                // pointHoverRadius: 7
             },
             {
                 label: 'Max',
@@ -73,8 +58,6 @@ export const dailyTempData = (data) => {
                 fill: false,
                 backgroundColor: 'red',
                 borderColor: 'red',
-                // pointRadius: 5,
-                // pointHoverRadius: 7
             },
         ],
     }
@@ -98,6 +81,10 @@ export const hourlyTempData = (data) => {
         const h = hour(date);
         hours.push(h);
     })
+
+    temps.length = 25;
+    feels.length = 25;
+    hours.length = 25;
 
     const chartData = {
         labels: hours,
@@ -166,6 +153,9 @@ export const hourlyPressure = (data) => {
         hours.push(h);
     })
 
+    pressures.length = 25;
+    hours.length = 25;
+
     const chartData = {
         labels: hours,
         datasets: [{
@@ -231,6 +221,9 @@ export const hourlyWind = (data) => {
         const h = hour(date);
         hours.push(h);
     })
+
+    winds.length = 25;
+    hours.length = 25;
 
     const chartData = {
         labels: hours,
@@ -324,6 +317,11 @@ export const hourlyPercentage = (data) => {
         precipitation.push(object.pop * 100);
     })
 
+    hours.length = 25;
+    clouds.length = 25;
+    humidity.length = 25;
+    precipitation.length = 25;
+
     const chartData = {
         labels: hours,
         datasets: [{
@@ -331,14 +329,14 @@ export const hourlyPercentage = (data) => {
                 data: clouds,
                 fill: false,
                 backgroundColor: 'orange',
-                borderColor: 'orange',
+                borderColor: 'orange'
             },
             {
                 label: 'Humidity',
                 data: humidity,
                 fill: false,
                 backgroundColor: 'cadetBlue',
-                borderColor: 'cadetBlue',
+                borderColor: 'cadetBlue'
             },
             {
                 label: 'Probability of precipitation',
@@ -444,6 +442,9 @@ export const hourlySnow = (data) => {
         }
     })
 
+    hours.length = 25;
+    snows.length = 25;
+
     const chartData = {
         labels: hours,
         datasets: [{
@@ -473,6 +474,9 @@ export const hourlyRain = (data) => {
             rains.push(0)
         }
     })
+
+    hours.length = 25;
+    rains.length = 25;
 
     const chartData = {
         labels: hours,
