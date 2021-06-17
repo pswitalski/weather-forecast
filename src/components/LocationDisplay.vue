@@ -39,8 +39,11 @@ export default {
         }
     },
     mounted() {
-        this.sunrise = getEventHour(this.country.sunrise)
-        this.sunset = getEventHour(this.country.sunset)
+        this.sunrise = getEventHour(this.country.sunrise);
+        this.sunset = getEventHour(this.country.sunset);
+        if (this.name === '') {
+            this.$router.push('/');
+        }
     }
 }
 </script>
