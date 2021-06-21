@@ -1,5 +1,6 @@
 # Weather Forecast
 
+Check curent weather, forecast and air condition for any place in the world.
 ## Live preview
 
 https://weather-forecast-vue.netlify.app/
