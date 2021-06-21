@@ -1,4 +1,17 @@
-# weather-forecast
+# Weather Forecast
+
+## Live preview
+
+https://weather-forecast-vue.netlify.app/
+
+## Technologies
+
+Project is created with:
+
+* Vue
+* Vue Router
+* Axios
+* Chart.js
 
 ## Project setup
 ```
@@ -7,7 +20,7 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm start
 ```
 
 ### Compiles and minifies for production
@@ -15,5 +28,9 @@ npm run serve
 npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Open Weather API
+
+All data in app comes from Open Weather API.
+
+https://openweathermap.org/api
+
